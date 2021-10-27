@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,61 +13,64 @@
 <link rel="stylesheet" href="/css/bootstrap.min.css">
 <link rel="stylesheet" href="/css/dive.css">
 </head>
+
 <body>
 
-	<div th:fragment="sidebar" id="panel" class="activepanel ">
-		<div id="cpanel1head" style="margin: 0px; height: 10vh;" class="row">
-			<h2 id="titulopanel" class="col-lg-10">E-BUSINESS</h2>
-			<i id="iconpanel" class="fa fa-bars col-lg-2"></i>
-		</div>
-		<div id="cpanelbody" class="row">
+	<div th:replace="fragments/sidebar :: sidebar" id="panel"
+		class="activepanel"></div>
 
-			<div class="panelitem">
-				<a th:href="@{/home}"> <i class="fa fa-home"
-					style="color: #7764E4;"></i>
-				</a>
-				<p>Inicio</p>
+	<div class="bg row">
+		<div th:replace="fragments/nav :: nav" class="row topbar col-lg-12"></div>
+
+		<div class="content container row col-12">
+			<div class="col-1">
+				<h3></h3>
+			</div>
+			<div class="col-3">
+				<h3>Registrar Soporte</h3>
+				<img class="imgform" alt="" th:src="@{/img/form/Soporte.jpg}">
+			</div>
+			<div class="col-8 frm-registro">
+				<form th:action="@{/soportes/save}" method="post"
+					th:object="${soporte}">
+					<div class="form-group">
+						<label>ID:</label> <input type="text" class="form-control"
+							readonly th:field="*{idSoporte}"></input>
+
+						<div class="form-group">
+							<label for="nombre">NOMBRE :</label> <input type="text" required
+								th:field="*{nombreSoporte}" class="form-control" id="nombre"></input>
+							<div class="alert alert-danger"
+								th:if="${#fields.hasErrors('nombreSoporte')}"
+								th:errors="nombreSoporte"></div>
+								
+							<label for="empresa">DESCRIPCION PROBLEMA:</label> <input type="text" required
+								th:field="*{descripcionProblema}" class="form-control" id="problema"></input>
+							<div class="alert alert-danger"
+								th:if="${#fields.hasErrors('descripcionProblema')}"
+								th:errors="*{descripcionProblema}"></div>
+								
+                         
+						</div>
+
+					</div>
+					<button type="submit" class="btn btn-warning">Aceptar</button>
+					<a href="/soportes/list" class="btn btn-light">Cancelar</a>
+
+				</form>
+				<div th:if="${mensaje}" class="alert alert-danger">
+					<p th:text="${mensaje}"></p>
+				</div>
 			</div>
 
-			<div class="panelitem">
-				<a th:href="@{/emprendedores/list}"> <i class="fa fa-user-circle" aria-hidden="true"
-					style="color: #5450D6;"></i>
-				</a>
-				<p>Emprendedores</p>
-			</div>
-			<div class="panelitem">
-				<a th:href="@{/mercadologos/list}"> <i class="fa fa-user-circle" aria-hidden="true"
-					style="color: #5450D6;"></i>
-				</a>
-				<p>Mercadologos</p>
-			</div>
-			<div class="panelitem">
-				<a th:href="@{/proyectos/list}"> <i class="fa fa-briefcase" aria-hidden="true"
-					style="color: #5450D6;"></i>
-				</a>
-				<p>Proyectos</p>
-			</div>
-			<div class="panelitem">
-				<a th:href="@{/contratos/list}"> <i class="fa fa-pencil" aria-hidden="true"
-					style="color: #5450D6;"></i>
-				</a>
-				<p>Contratos</p>
-			</div>
-			<div class="panelitem">
-				<a th:href="@{/soportes/list}"> <i class="fa fa-envelope-o" aria-hidden="true"
-				style="color: #5450D6;"></i>
-				
-				</a>
-				<p>Soportes</p>
-			</div>
-			<div class="panelitem">
-				<a th:href="@{/reviewEmprendedores/list}"> <i class="fa fa-envelope-o" aria-hidden="true"
-				style="color: #5450D6;"></i>
-				
-				</a>
-				<p>Review Emprendedores</p>
-			</div>
 		</div>
 	</div>
+
+
+	<script src="/js/popper.min.js"></script>
+	<script src="/js/jquery-3.3.1.slim.min.js"></script>
+	<script src="/js/bootstrap.min.js"></script>
+	<script src="/js/dive.js"></script>
 </body>
+
 </html>

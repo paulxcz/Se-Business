@@ -1,26 +1,28 @@
 package pe.edu.upc.serviceimpl;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import pe.edu.upc.entities.Proyecto;
 import pe.edu.upc.repository.IProyectoRepository;
 import pe.edu.upc.serviceinterface.IProyectoService;
 
+@Service
 public class ProyectoServiceImpl implements IProyectoService{
-
 	@Autowired
 	private IProyectoRepository pR;
 	
 	@Override
-	public Integer insert(Proyecto proyecto) {
-		int rpta = pR.buscarProyecto(proyecto.getNombre());
-		if (rpta == 0) {
-			pR.save(proyecto);
+	public boolean insert(Proyecto proyecto) {
+		Proyecto objProyecto = pR.save(proyecto);
+		if (objProyecto == null) {
+			return false;
+		}else {
+			return true;
 		}
-		return rpta;
-
 	}
 
 	@Override
@@ -28,5 +30,11 @@ public class ProyectoServiceImpl implements IProyectoService{
 		// TODO Auto-generated method stub
 		return pR.findAll();
 	}
+	
+	@Override
+	public Proyecto listarId(int idProyecto){
+		Optional<Proyecto> op = pR.findById(idProyecto);
+		return op.isPresent() ? op.get() : new Proyecto();
+	}	
 
 }
