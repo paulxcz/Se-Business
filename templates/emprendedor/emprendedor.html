@@ -37,19 +37,22 @@
 							readonly th:field="*{idEmprendedor}"></input>
 
 						<div class="form-group">
-							<label for="nombre">NOMBRE EMPRENDEDOR:</label> <input type="text" required
+							<label for="nombre">NOMBRE EMPRENDEDOR:</label> <input type="text" 
+							pattern="[A-Za-z]{1,32}" required
 								th:field="*{nombreEmprendedor}" class="form-control" id="nombre"></input>
 							<div class="alert alert-danger"
 								th:if="${#fields.hasErrors('nombreEmprendedor')}"
 								th:errors="*{nombreEmprendedor}"></div>
 								
-							<label for="empresa">NOMBRE EMPRESA:</label> <input type="text" required
+							<label for="empresa">NOMBRE EMPRESA:</label> <input type="text" 
+							pattern="[A-Za-z]{1,32}" required
 								th:field="*{nombreEmpresa}" class="form-control" id="empresa"></input>
 							<div class="alert alert-danger"
 								th:if="${#fields.hasErrors('nombreEmpresa')}"
 								th:errors="*{nombreEmpresa}"></div>
 								
-                            <label for="negocio">GIRO DEL NEGOCIO:</label> <input type="text" required
+                            <label for="negocio">GIRO DEL NEGOCIO:</label> <input type="text" 
+                            pattern="[A-Za-z]{1,32}" required
 								th:field="*{giroNegocio}" class="form-control" id="negocio"></input>
 							<div class="alert alert-danger"
 								th:if="${#fields.hasErrors('giroNegocio')}"

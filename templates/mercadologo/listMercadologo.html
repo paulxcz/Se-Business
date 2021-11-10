@@ -26,7 +26,17 @@
 
 			<div class="d-flex">
 				<h3 class="title-content">Lista de Mercadologo</h3>
+				<a th:href="@{/reviewMercadologos/list}" class="btn btn-warning">Calificaciones</a>
 				<a th:href="@{/mercadologos/new}" class="btn btn-warning">Nuevo</a>
+				<a th:href="@{/mercadologos/find}" class="btn btn-warning">Buscar</a>
+				<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
+					data-parent="#accordionSidebar">
+					<div class="bg-white py-2 collapse-inner rounded">
+						<a class="collapse-item" th:href="@{/mercadologos/listMercadologo}">Buscar
+							Mercadologos</a>
+					</div>
+				</div>
+				
 			</div>
 			<table class="table">
 				<thead class="thead-light">

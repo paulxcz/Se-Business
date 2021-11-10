@@ -22,53 +22,43 @@
 	<div class="bg row">
 		<div th:replace="fragments/nav :: nav" class="row topbar col-lg-12"></div>
 
-		<div class="content container row col-12">
-			<div class="col-1">
-				<h3></h3>
-			</div>
-			<div class="col-3">
-				<h3>Registrar Soporte</h3>
-				<img class="imgform" alt="" th:src="@{/img/form/Soporte.jpg}">
-			</div>
-			<div class="col-8 frm-registro">
-				<form th:action="@{/soportes/save}" method="post"
-					th:object="${soporte}">
-					<div class="form-group">
-						<label>ID:</label> <input type="text" class="form-control"
-							readonly th:field="*{idSoporte}"></input>
+		<div class="content container">
 
-						<div class="form-group">
-							<label for="nombre">NOMBRE :</label> <input type="text" required
-								th:field="*{nombreSoporte}" class="form-control" id="nombre"></input>
-							<div class="alert alert-danger"
-								th:if="${#fields.hasErrors('nombreSoporte')}"
-								th:errors="nombreSoporte"></div>
-								
-							<label for="empresa">DESCRIPCION PROBLEMA:</label><br />
-								<textarea rows="7" cols="20" required="required" th:field="*{descripcionProblema}" class="form-control">
-									
-								</textarea>
-							<div class="alert alert-danger"
-								th:if="${#fields.hasErrors('descripcionProblema')}"
-								th:errors="*{descripcionProblema}">
-								
-								
-							</div>
-								
-                         
-						</div>
-
+			<div class="d-flex">
+				<h3 class="title-content">Lista de Emprendedores</h3>
+				<div class="d-flex">
+					<div>
+						<a th:href="@{/reviewEmprendedores/list}" class="btn btn-warning">Calificaciones</a>
 					</div>
-					<button type="submit" class="btn btn-warning">Aceptar</button>
-					<a href="/soportes/list" class="btn btn-light">Cancelar</a>
 
-				</form>
-				<div th:if="${mensaje}" class="alert alert-danger">
-					<p th:text="${mensaje}"></p>
+					<div>
+						<a th:href="@{/emprendedores/new}" class="btn btn-warning">Nuevo</a>
+					</div>
 				</div>
 			</div>
-
+			<table class="table">
+				<thead class="thead-light">
+					<tr>
+						<th scope="col" class="text-center">ID</th>
+						<th scope="col" class="text-center">Nombre</th>
+						<th scope="col" class="text-center">Empresa</th>
+						<th scope="col" class="text-center">Negocio</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="em : ${listaEmprendedores}">
+						<td class="text-center" th:text="${em.idEmprendedor}"></td>
+						<td class="text-center" th:text="${em.nombreEmprendedor}"></td>
+						<td class="text-center" th:text="${em.nombreEmpresa}"></td>
+						<td class="text-center" th:text="${em.giroNegocio}"></td>
+					</tr>
+				</tbody>
+			</table>
 		</div>
+		<div th:if="${mensaje}" class="alert alert-danger">
+			<p th:text="${mensaje}"></p>
+		</div>
+
 	</div>
 
 

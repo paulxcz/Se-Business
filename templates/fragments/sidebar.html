@@ -16,7 +16,7 @@
 
 	<div th:fragment="sidebar" id="panel" class="activepanel ">
 		<div id="cpanel1head" style="margin: 0px; height: 10vh;" class="row">
-			<h2 id="titulopanel" class="col-lg-10">Web example</h2>
+			<h2 id="titulopanel" class="col-lg-10">E-BUSINESS</h2>
 			<i id="iconpanel" class="fa fa-bars col-lg-2"></i>
 		</div>
 		<div id="cpanelbody" class="row">
@@ -29,25 +29,37 @@
 			</div>
 
 			<div class="panelitem">
-				<a th:href="@{/emprendedores/list}"> <i class="fa fa-th-large"
+				<a th:href="@{/emprendedores/list}"> <i class="fa fa-user-circle" aria-hidden="true"
 					style="color: #5450D6;"></i>
 				</a>
 				<p>Emprendedores</p>
 			</div>
 			<div class="panelitem">
-				<a th:href="@{/mercadologos/list}"> <i class="fa fa-th-large"
+				<a th:href="@{/mercadologos/list}"> <i class="fa fa-user-circle" aria-hidden="true"
 					style="color: #5450D6;"></i>
 				</a>
 				<p>Mercadologos</p>
 			</div>
 			<div class="panelitem">
-				<a th:href="@{/soportes/list}"> <i class="fa fa-envelope-o" aria-hidden="true"></i>
+				<a th:href="@{/proyectos/list}"> <i class="fa fa-briefcase" aria-hidden="true"
+					style="color: #5450D6;"></i>
+				</a>
+				<p>Proyectos</p>
+			</div>
+			<div class="panelitem">
+				<a th:href="@{/contratos/list}"> <i class="fa fa-pencil" aria-hidden="true"
+					style="color: #5450D6;"></i>
+				</a>
+				<p>Contratos</p>
+			</div>
+			<div class="panelitem">
+				<a th:href="@{/soportes/list}"> <i class="fa fa-envelope-o" aria-hidden="true"
+				style="color: #5450D6;"></i>
+				
 				</a>
 				<p>Soportes</p>
 			</div>
-			
-			
-
+		
 		</div>
 	</div>
 </body>

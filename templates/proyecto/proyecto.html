@@ -23,67 +23,82 @@
 		<div th:replace="fragments/nav :: nav" class="row topbar col-lg-12"></div>
 
 		<div class="content container row col-12">
-			<div class="col-1">
-				<h3></h3>
+			<div class="col-6">
+				<h3>Registrar Proyecto</h3>
+				<img class="imgform" alt="" th:src="@{/img/form/Proyecto.jpg}">
 			</div>
-			<div class="col-3">
-				<h3>Registrar Mercadologo</h3>
-			</div>
-			<div class="col-8 frm-registro">
-				<form th:action="@{/mercadologos/save}" method="post"
-					th:object="${mercadologo}">
-					<div class="form-group">
-						<label>ID:</label> <input type="text" class="form-control"
-							readonly th:field="*{idMercadologo}"></input>
+			<div class="col-6 frm-registro">
+				<form th:action="@{/proyectos/save}" method="post" class="row"
+					th:object="${proyecto}" enctype="multipart/form-data">
 
+					<div class="col-6">
 						<div class="form-group">
-							<label for="nombre">NOMBRE:</label> <input type="text"
-							pattern="[A-Za-z]{1,32}" required
-								th:field="*{nombreMercadologo}" class="form-control" id="nombre"></input>
-							<div class="alert alert-danger"
-								th:if="${#fields.hasErrors('nombreMercadologo')}"
-								th:errors="*{nombreMercadologo}"></div>
-							
-							<label for="numero">NUMERO:</label> <input type="text" 
-							pattern="[0-9]{9}" required
-								th:field="*{numeroMercadologo}" class="form-control" id="numero" placeholder="999999999"></input>
-							<div class="alert alert-danger"
-								th:if="${#fields.hasErrors('numeroMercadologo')}"
-								th:errors="*{numeroMercadologo}"></div>
-								
-							<label for="rating">RATING:</label> 
-							<select th:field="*{ratingMercadologo}" required="required" class="form-control" >
-								<option value="1">1</option>
-								<option value="2">2</option>
-								<option value="3">3</option>
-								<option value="4">4</option>
-								<option value="5">5</option>
-							</select>
-							<br/>
-							<div class="alert alert-danger"
-								th:if="${#fields.hasErrors('ratingMercadologo')}"
-								th:errors="*{ratingMercadologo}"></div>
-							
-							<label for="correo">CORREO:</label> <input type="email" required
-								th:field="*{correoMercadologo}" class="form-control" id="correo"></input>
-							<div class="alert alert-danger"
-								th:if="${#fields.hasErrors('correoMercadologo')}"
-								th:errors="*{correoMercadologo}"></div>
-
-							<label for="linkedin">LINKEDIN:</label> <input type="text"
-							 pattern="[A-Za-z]{1,32}" required
-								th:field="*{linkedinMercadologo}" class="form-control" id="linkedin"></input>
-							<div class="alert alert-danger"
-								th:if="${#fields.hasErrors('linkedinMercadologo')}"
-								th:errors="*{linkedinMercadologo}"></div>
+							<label for="id">ID:</label> <input type="text" readonly
+								class="form-control" th:field="*{idProyecto}"></input>
 						</div>
 
-					</div>
-					<button type="submit" class="btn btn-warning">Aceptar</button>
-					<a href="/mercadologos/list" class="btn btn-light">Cancelar</a>
-					
+						<div class="form-group">
+							<label for="nombre">NOMBRE DEL PROYECTO:</label> <input type="text" 
+							pattern="[A-Za-z]{1,32}" required
+								th:field="*{nombre}" class="form-control" id="nombre"></input>
+						</div>
+						<div class="alert alert-danger"
+							th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></div>
 
+
+						<div class="form-group">
+							<label for="anuncio">TITULO DE ANUNCIO:</label> <input type="text" 
+							pattern="[A-Za-z]{1,64}" required
+								th:field="*{anuncio}" class="form-control" id="anuncio"></input>
+						</div>
+						<div class="alert alert-danger"
+							th:if="${#fields.hasErrors('anuncio')}" th:errors="*{anuncio}"></div>
+							
+						<div class="form-group">
+							<label for="fecha">FECHA DE FINALIZACION:</label> <input type="date" required
+								th:field="*{fechaFinalizacion}" class="form-control" id="fecha"></input>
+						</div>
+
+				</div>
+						<div class="col-6">
+							<div class="form-group">
+								<label for="emprendedor">EMPRENDEDOR:</label> <select
+									class="form-control" th:field="*{emprendedor.idEmprendedor}">
+									<option th:each="e: ${listaEmprendedores}"
+										th:value="${e.idEmprendedor}" th:text="${e.nombreEmprendedor}"
+										th:selected="(${e.idEmprendedor} == *{emprendedor.idEmprendedor})"></option>
+								</select>
+							</div>
+
+
+							<div class="form-group">
+								<label for="descripcion">DESCRIPCION DE PROYECTO:</label> <input type="text"
+									required th:field="*{descripcion}" class="form-control"
+									id="descripcion"></input>
+							</div>
+							<div class="alert alert-danger"
+								th:if="${#fields.hasErrors('descripcion')}"
+								th:errors="*{descripcion}"></div>
+
+
+
+						<div class="form-group">
+							<label for="estado">ESTADO:</label> 
+							<select th:field="*{estado}" required="required" class="form-control" >
+								<option value="Abierto">Abierto</option>
+								<option value="Cerrado">Cerrado</option>
+							</select>
+						</div>
+						<div class="alert alert-danger"
+							th:if="${#fields.hasErrors('estado')}" th:errors="*{estado}"></div>
+					</div>
+
+
+					<button style="margin: 0px 30px;" type="submit"
+						class="btnadd btn btn-primary">Aceptar</button>
+					<a href="/proyectos/list" class="btn btn-danger">Cancelar</a>
 				</form>
+
 				<div th:if="${mensaje}" class="alert alert-danger">
 					<p th:text="${mensaje}"></p>
 				</div>
@@ -97,6 +112,8 @@
 	<script src="/js/jquery-3.3.1.slim.min.js"></script>
 	<script src="/js/bootstrap.min.js"></script>
 	<script src="/js/dive.js"></script>
+	<script src="/js/setDate.js"></script>
+
 </body>
 
 </html>
