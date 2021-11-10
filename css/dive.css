@@ -114,7 +114,7 @@
 }
 
 #estado {
-	color: white;
+	color: black !important;
 	font-size: 14px;
 }
 
