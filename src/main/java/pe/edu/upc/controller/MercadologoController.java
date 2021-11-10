@@ -76,7 +76,7 @@ public class MercadologoController {
 			System.out.println(e.getMessage());
 			model.put("mensaje", "No se puedo eliminar el mercadologo");
 		}
-		return "/mercadologo/listMercadologo";
+		return "redirect:/mercadologos/list";
 	}
 	
 	
