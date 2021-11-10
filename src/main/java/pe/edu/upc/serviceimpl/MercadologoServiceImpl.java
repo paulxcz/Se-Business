@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import pe.edu.upc.entities.Mercadologo;
 import pe.edu.upc.repository.IMercadologoRepository;
@@ -48,4 +49,9 @@ public class MercadologoServiceImpl implements IMercadologoService {
 		return mR.findByNombreMercadologoIgnoreCase(nombreMercadologo);
 	}
 
+	@Override
+	@Transactional
+	public void delete(int idMercadologo) {
+		mR.deleteById(idMercadologo);
+	}
 }

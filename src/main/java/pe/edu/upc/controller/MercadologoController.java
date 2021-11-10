@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.support.SessionStatus;
 
 import pe.edu.upc.entities.Mercadologo;
@@ -63,6 +64,21 @@ public class MercadologoController {
 			return "redirect:/mercadologos/list";
 		}
 	}
+	
+	@RequestMapping("/delete")
+	public String delete(Map<String, Object>model, @RequestParam(value = "id")Integer id) {
+		try {
+			if(id != null && id>0) {
+				mService.delete(id);
+				model.put("mensaje", "Se elimino correctamente");
+			}
+		} catch(Exception e) {
+			System.out.println(e.getMessage());
+			model.put("mensaje", "No se puedo eliminar el mercadologo");
+		}
+		return "/mercadologo/listMercadologo";
+	}
+	
 	
 	@GetMapping("/detalle/{id}")
 	public String detailsMercadologo(@PathVariable(value="id") int idMercadologo, Model model) {
