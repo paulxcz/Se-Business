@@ -1,13 +1,18 @@
 package pe.edu.upc.controller;
 
+import java.util.Map;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.support.SessionStatus;
 
 import pe.edu.upc.entities.Emprendedor;
@@ -36,6 +41,38 @@ public class EmprendedorController {
 		}
 		return "emprendedor/listEmprendedores";
 	}
+	
+	@RequestMapping("/delete")
+	public String delete(Map<String, Object>model, @RequestParam(value = "id")Integer id) {
+		try {
+			if(id != null && id>0) {
+				eService.delete(id);
+				model.put("mensaje", "Se elimino correctamente");
+			}
+		} catch(Exception e) {
+			System.out.println(e.getMessage());
+			model.put("mensaje", "No se puedo eliminar el emprendedor");
+		}
+		return "/emprendedor/listEmprendedores";
+	}
+	
+	@GetMapping("/detalle/{id}")
+	public String detailsCategory(@PathVariable(value="id")int id, Model model) {
+		try {
+			Optional<Emprendedor> emprendedor = eService.listarId(id);
+			if(!emprendedor.isPresent()) {
+				model.addAttribute("info", "Emprendedor no existe");
+				return "redirect:/emprendedor/list";
+			}
+			else {
+				model.addAttribute("emprendedor", emprendedor.get());
+			}
+		} catch (Exception e) {
+			model.addAttribute("error", e.getMessage());
+		}
+		return "/emprendedor/update";
+	}
+	
 	
 	@PostMapping("/save")
 	public String saveEmprendedor(@Validated Emprendedor emprendedor, BindingResult result, Model model, SessionStatus status) throws Exception {

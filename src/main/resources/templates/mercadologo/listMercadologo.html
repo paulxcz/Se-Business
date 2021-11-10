@@ -26,7 +26,16 @@
 
 			<div class="d-flex">
 				<h3 class="title-content">Lista de Mercadologo</h3>
+				<a th:href="@{/reviewMercadologos/list}" class="btn btn-warning">Calificaciones</a>
 				<a th:href="@{/mercadologos/new}" class="btn btn-warning">Nuevo</a>
+				<a th:href="@{/mercadologos/find}" class="btn btn-warning">Buscar</a>
+				<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
+					data-parent="#accordionSidebar">
+					<div class="bg-white py-2 collapse-inner rounded">
+						<a class="collapse-item" th:href="@{/mercadologos/listMercadologo}">Buscar
+							Mercadologos</a>
+					</div>
+				</div>
 			</div>
 			<table class="table">
 				<thead class="thead-light">
@@ -37,6 +46,7 @@
 						<th scope="col" class="text-center">Rating</th>
 						<th scope="col" class="text-center">Correo</th>
 						<th scope="col" class="text-center">Linkedin</th>
+						<th scope="col" class="text-center">Operación</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -47,6 +57,7 @@
 						<td class="text-center" th:text="${mer.ratingMercadologo}"></td>
 						<td class="text-center" th:text="${mer.correoMercadologo}"></td>
 						<td class="text-center" th:text="${mer.linkedinMercadologo}"></td>
+						<td class="text-center" ><a th:href="@{'/mercadologos/detalle/' + ${mer.idMercadologo}}" class="btn btn-dark">Actualizar</a></td>
 					</tr>
 				</tbody>
 			</table>

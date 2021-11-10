@@ -44,11 +44,16 @@
 								th:if="${#fields.hasErrors('nombreSoporte')}"
 								th:errors="nombreSoporte"></div>
 								
-							<label for="empresa">DESCRIPCION PROBLEMA:</label> <input type="text" required
-								th:field="*{descripcionProblema}" class="form-control" id="problema"></input>
+							<label for="empresa">DESCRIPCION PROBLEMA:</label><br />
+								<textarea rows="7" cols="20" required="required" th:field="*{descripcionProblema}" class="form-control">
+									
+								</textarea>
 							<div class="alert alert-danger"
 								th:if="${#fields.hasErrors('descripcionProblema')}"
-								th:errors="*{descripcionProblema}"></div>
+								th:errors="*{descripcionProblema}">
+								
+								
+							</div>
 								
                          
 						</div>

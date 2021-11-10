@@ -37,14 +37,22 @@
 							readonly th:field="*{idReview}"></input>
 
 						<div class="form-group">
-							<label for="calificacion">CALIFICACION :</label> <input type="text" required
-								th:field="*{calificacion}" class="form-control" id="calificacion"></input>
+							<label for="calificacion">CALIFICACION :</label> 
+							
+							<select th:field="*{calificacion}" required="required" class="form-control" >
+								<option value="1">1</option>
+								<option value="2">2</option>
+								<option value="3">3</option>
+								<option value="4">4</option>
+								<option value="5">5</option>
+							</select>
+							<br />
 							<div class="alert alert-danger"
 								th:if="${#fields.hasErrors('calificacion')}"
 								th:errors="calificacion"></div>
 								
-							<label for="detalleReview">DETALLE:</label> <input type="text" required
-								th:field="*{detalleReview}" class="form-control" id="detalleReview"></input>
+							<label for="detalleReview">DETALLE DE RESEÑA:</label> 
+								<textarea rows="5" cols="6" th:field="*{detalleReview}" required="required" class="form-control" id="detalleReview"></textarea>
 							<div class="alert alert-danger"
 								th:if="${#fields.hasErrors('detalleReview')}"
 								th:errors="*{detalleReview}"></div>
