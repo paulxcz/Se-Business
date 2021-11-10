@@ -26,7 +26,15 @@
 
 			<div class="d-flex">
 				<h3 class="title-content">Lista de Emprendedores</h3>
-				<a th:href="@{/emprendedores/new}" class="btn btn-warning">Nuevo</a>
+				<div class="d-flex">
+					<div>
+						<a th:href="@{/reviewEmprendedores/list}" class="btn btn-dark">Calificaciones</a>
+					</div>
+
+					<div>
+						<a th:href="@{/emprendedores/new}" class="btn btn-danger">Nuevo</a>
+					</div>
+				</div>
 			</div>
 			<table class="table">
 				<thead class="thead-light">
@@ -35,6 +43,8 @@
 						<th scope="col" class="text-center">Nombre</th>
 						<th scope="col" class="text-center">Empresa</th>
 						<th scope="col" class="text-center">Negocio</th>
+						<th scope="col" class="text-center">Operación</th>
+						<th scope="col" class="text-center">Operación</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -43,6 +53,10 @@
 						<td class="text-center" th:text="${em.nombreEmprendedor}"></td>
 						<td class="text-center" th:text="${em.nombreEmpresa}"></td>
 						<td class="text-center" th:text="${em.giroNegocio}"></td>
+						<td align="center"><a th:href="@{'/emprendedores/detalle/' + ${em.idEmprendedor}}"
+							class="btn btn-dark">Actualizar</a></td>
+						<td align = "center"><a th:href="@{/emprendedores/delete?id=}+${em.idEmprendedor}"
+							class="btn btn-dark">Eliminar</a></td>
 					</tr>
 				</tbody>
 			</table>

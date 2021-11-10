@@ -37,31 +37,41 @@
 							readonly th:field="*{idMercadologo}"></input>
 
 						<div class="form-group">
-							<label for="nombre">NOMBRE:</label> <input type="text" required
+							<label for="nombre">NOMBRE:</label> <input type="text"
+							pattern="[A-Za-z]{1,32}" required
 								th:field="*{nombreMercadologo}" class="form-control" id="nombre"></input>
 							<div class="alert alert-danger"
 								th:if="${#fields.hasErrors('nombreMercadologo')}"
 								th:errors="*{nombreMercadologo}"></div>
 							
-							<label for="numero">NUMERO:</label> <input type="text" required
-								th:field="*{numeroMercadologo}" class="form-control" id="numero"></input>
+							<label for="numero">NUMERO:</label> <input type="text" 
+							pattern="[0-9]{9}" required
+								th:field="*{numeroMercadologo}" class="form-control" id="numero" placeholder="999999999"></input>
 							<div class="alert alert-danger"
 								th:if="${#fields.hasErrors('numeroMercadologo')}"
 								th:errors="*{numeroMercadologo}"></div>
 								
-							<label for="rating">RATING:</label> <input type="text" required
-								th:field="*{ratingMercadologo}" class="form-control" id="rating"></input>
+							<label for="rating">RATING:</label> 
+							<select th:field="*{ratingMercadologo}" required="required" class="form-control" >
+								<option value="1">1</option>
+								<option value="2">2</option>
+								<option value="3">3</option>
+								<option value="4">4</option>
+								<option value="5">5</option>
+							</select>
+							<br/>
 							<div class="alert alert-danger"
 								th:if="${#fields.hasErrors('ratingMercadologo')}"
 								th:errors="*{ratingMercadologo}"></div>
 							
-							<label for="correo">CORREO:</label> <input type="text" required
+							<label for="correo">CORREO:</label> <input type="email" required
 								th:field="*{correoMercadologo}" class="form-control" id="correo"></input>
 							<div class="alert alert-danger"
 								th:if="${#fields.hasErrors('correoMercadologo')}"
 								th:errors="*{correoMercadologo}"></div>
 
-							<label for="linkedin">LINKEDIN:</label> <input type="text" required
+							<label for="linkedin">LINKEDIN:</label> <input type="text"
+							 pattern="[A-Za-z]{1,32}" required
 								th:field="*{linkedinMercadologo}" class="form-control" id="linkedin"></input>
 							<div class="alert alert-danger"
 								th:if="${#fields.hasErrors('linkedinMercadologo')}"

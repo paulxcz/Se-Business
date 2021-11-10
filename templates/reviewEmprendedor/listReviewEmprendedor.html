@@ -1,4 +1,4 @@
-dw<!DOCTYPE html>
+<!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 
 <head>
@@ -25,39 +25,25 @@ dw<!DOCTYPE html>
 		<div class="content container">
 
 			<div class="d-flex">
-				<h3 class="title-content">Lista de Mercadologo</h3>
-				<a th:href="@{/reviewMercadologos/list}" class="btn btn-dark">Calificaciones</a>
-				<a th:href="@{/mercadologos/new}" class="btn btn-danger">Nuevo</a>
-				<a th:href="@{/mercadologos/find}" class="btn btn-secondary">Buscar</a>
-				<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
-					data-parent="#accordionSidebar">
-					<div class="bg-white py-2 collapse-inner rounded">
-						<a class="collapse-item" th:href="@{/mercadologos/listMercadologo}">Buscar
-							Mercadologos</a>
-					</div>
-				</div>
+				<h3 class="title-content">Lista de Reseñas para Emprendedores</h3>
+				<a th:href="@{/emprendedores/list}" class="btn btn-warning">Volver</a>
+				<a th:href="@{/reviewEmprendedores/new}" class="btn btn-warning">Nuevo</a>
 			</div>
 			<table class="table">
 				<thead class="thead-light">
 					<tr>
-						<th scope="col" class="text-center">Código</th>
-						<th scope="col" class="text-center">Nombre</th>
-						<th scope="col" class="text-center">Numero</th>
-						<th scope="col" class="text-center">Rating</th>
-						<th scope="col" class="text-center">Correo</th>
-						<th scope="col" class="text-center">Linkedin</th>
-						<th scope="col" class="text-center">Operación</th>
+						<th scope="col" class="text-center">ID</th>
+						<th scope="col" class="text-center">Emprendedor</th>
+						<th scope="col" class="text-center">Calificación</th>
+						<th scope="col" class="text-center">Detalle</th>
 					</tr>
 				</thead>
 				<tbody>
-					<tr th:each="mer : ${listaMercadologos}">
-						<td class="text-center" th:text="${mer.idMercadologo}"></td>
-						<td class="text-center" th:text="${mer.nombreMercadologo}"></td>
-						<td class="text-center" th:text="${mer.numeroMercadologo}"></td>
-						<td class="text-center" th:text="${mer.ratingMercadologo}"></td>
-						<td class="text-center" th:text="${mer.correoMercadologo}"></td>
-						<td class="text-center" th:text="${mer.linkedinMercadologo}"></td>
-						<td class="text-center" ><a th:href="@{'/mercadologos/detalle/' + ${mer.idMercadologo}}" class="btn btn-dark">Actualizar</a></td>
+					<tr th:each="re : ${listaReviewEmprendedor}">
+						<td class="text-center" th:text="${re.idReview}"></td>
+						<td class="text-center" th:text="${re.emprendedor.nombreEmprendedor}"></td>
+						<td class="text-center" th:text="${re.calificacion}"></td>
+						<td class="text-center" th:text="${re.detalleReview}"></td>
 					</tr>
 				</tbody>
 			</table>

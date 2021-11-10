@@ -1,4 +1,4 @@
-dw<!DOCTYPE html>
+<!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 
 <head>
@@ -22,50 +22,60 @@ dw<!DOCTYPE html>
 	<div class="bg row">
 		<div th:replace="fragments/nav :: nav" class="row topbar col-lg-12"></div>
 
-		<div class="content container">
+		<div class="content container row col-12">
+			<div class="col-1">
+				<h3></h3>
+			</div>
+			<div class="col-3">
+				<h3>Registrar Reseña para un Emprendedor</h3>
+			</div>
+			<div class="col-8 frm-registro">
+				<form th:action="@{/reviewEmprendedores/save}" method="post"
+					th:object="${reviewEmprendedor}">
+					<div class="form-group">
+						<label>ID:</label> <input type="text" class="form-control"
+							readonly th:field="*{idReview}"></input>
 
-			<div class="d-flex">
-				<h3 class="title-content">Lista de Mercadologo</h3>
-				<a th:href="@{/reviewMercadologos/list}" class="btn btn-dark">Calificaciones</a>
-				<a th:href="@{/mercadologos/new}" class="btn btn-danger">Nuevo</a>
-				<a th:href="@{/mercadologos/find}" class="btn btn-secondary">Buscar</a>
-				<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
-					data-parent="#accordionSidebar">
-					<div class="bg-white py-2 collapse-inner rounded">
-						<a class="collapse-item" th:href="@{/mercadologos/listMercadologo}">Buscar
-							Mercadologos</a>
+						<div class="form-group">
+							<label for="calificacion">CALIFICACION :</label> 
+							
+							<select th:field="*{calificacion}" required="required" class="form-control" >
+								<option value="1">1</option>
+								<option value="2">2</option>
+								<option value="3">3</option>
+								<option value="4">4</option>
+								<option value="5">5</option>
+							</select>
+							<br />
+							<div class="alert alert-danger"
+								th:if="${#fields.hasErrors('calificacion')}"
+								th:errors="calificacion"></div>
+								
+							<label for="detalleReview">DETALLE DE RESEÑA:</label> 
+								<textarea rows="5" cols="6" th:field="*{detalleReview}" required="required" class="form-control" id="detalleReview"></textarea>
+							<div class="alert alert-danger"
+								th:if="${#fields.hasErrors('detalleReview')}"
+								th:errors="*{detalleReview}"></div>
+								
+                         	<label for="Emprendedor">EMPRENDEDOR:</label> <select
+									class="form-control" th:field="*{emprendedor.idEmprendedor}">
+									<option th:each="e: ${listaEmprendedores}"
+										th:value="${e.idEmprendedor}" th:text="${e.nombreEmprendedor}"
+										th:selected="(${e.idEmprendedor} == *{emprendedor.idEmprendedor})"></option>
+								</select>
+						</div>
+
 					</div>
+					<button type="submit" class="btn btn-warning">Aceptar</button>
+					<a href="/reviewEmprendedores/list" class="btn btn-light">Cancelar</a>
+
+				</form>
+				<div th:if="${mensaje}" class="alert alert-danger">
+					<p th:text="${mensaje}"></p>
 				</div>
 			</div>
-			<table class="table">
-				<thead class="thead-light">
-					<tr>
-						<th scope="col" class="text-center">Código</th>
-						<th scope="col" class="text-center">Nombre</th>
-						<th scope="col" class="text-center">Numero</th>
-						<th scope="col" class="text-center">Rating</th>
-						<th scope="col" class="text-center">Correo</th>
-						<th scope="col" class="text-center">Linkedin</th>
-						<th scope="col" class="text-center">Operación</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr th:each="mer : ${listaMercadologos}">
-						<td class="text-center" th:text="${mer.idMercadologo}"></td>
-						<td class="text-center" th:text="${mer.nombreMercadologo}"></td>
-						<td class="text-center" th:text="${mer.numeroMercadologo}"></td>
-						<td class="text-center" th:text="${mer.ratingMercadologo}"></td>
-						<td class="text-center" th:text="${mer.correoMercadologo}"></td>
-						<td class="text-center" th:text="${mer.linkedinMercadologo}"></td>
-						<td class="text-center" ><a th:href="@{'/mercadologos/detalle/' + ${mer.idMercadologo}}" class="btn btn-dark">Actualizar</a></td>
-					</tr>
-				</tbody>
-			</table>
-		</div>
-		<div th:if="${mensaje}" class="alert alert-danger">
-			<p th:text="${mensaje}"></p>
-		</div>
 
+		</div>
 	</div>
 
 
