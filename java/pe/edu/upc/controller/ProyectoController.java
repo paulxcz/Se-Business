@@ -6,7 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.support.SessionStatus;
 
@@ -17,10 +17,8 @@ import pe.edu.upc.serviceinterface.IProyectoService;
 @Controller
 @RequestMapping("/proyectos")
 public class ProyectoController {
-
 	@Autowired
 	private IProyectoService pService;
-	
 	@Autowired
 	private IEmprendedorService eService;
 	
@@ -35,25 +33,26 @@ public class ProyectoController {
 	public String listProyectos(Model model) {
 		try {
 			model.addAttribute("proyecto", new Proyecto());
-
+			model.addAttribute("listaProyectos", pService.list());
 		}catch (Exception e) {
 			model.addAttribute("error",e.getMessage());
 		}
 		return "proyecto/listProyectos";
 	}
 	
-	@PostMapping("/save")
-	public String saveProyecto(@Validated Proyecto proyecto, BindingResult result, Model model, SessionStatus status ) throws Exception {
-		if(result.hasErrors()) {
+	@RequestMapping("/save")
+	public String saveProyecto(@ModelAttribute @Validated Proyecto objPro, BindingResult binRes, Model model, SessionStatus status ) throws Exception {
+		if(binRes.hasErrors()) {
+			model.addAttribute("listaEmprendedores", eService.list());
 			return "proyecto/proyecto";
 		} else {
-			int rpta = pService.insert(proyecto);
-			if(rpta>0) {
-				model.addAttribute("mensaje","Se guardó correctamente");
-				status.setComplete();
+			boolean flag = pService.insert(objPro);
+			if(flag) {
+				return "redirect:/proyectos/list";
+			}else {
+				model.addAttribute("mensaje", "Ocurrió un error");
+				return "redirect://proyectos/new";
 			}
-			model.addAttribute("proyecto", new Proyecto());
-			return "redirect:/proyectos/list";
 		}
 	}
 }

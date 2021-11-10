@@ -11,15 +11,17 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 @Entity
-@Table(name="Proyecto")
+@Table(name="proyectos")
 public class Proyecto {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	 private int idProyecto;
 	
-	@Column(name = "nombre", length = 60 , nullable = true)
+	@Column(name = "nombre" , nullable = false)
 	private String nombre;
 	
 	@Column(name="anuncio", length = 160, nullable = true)
@@ -32,16 +34,11 @@ public class Proyecto {
 	@Column(name="descripcion", length = 160, nullable = false)
 	private String descripcion;
 	
-	@Column(name="estado", length = 60, nullable = false)
+	@Column(name="estado", length = 100 ,nullable = false)
 	private String estado;
 	
-	
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date fechaFinalizacion;
-
-	public Proyecto() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
 
 	public Proyecto(int idProyecto, String nombre, String anuncio, Emprendedor emprendedor, String descripcion,
 			String estado, Date fechaFinalizacion) {
@@ -53,6 +50,11 @@ public class Proyecto {
 		this.descripcion = descripcion;
 		this.estado = estado;
 		this.fechaFinalizacion = fechaFinalizacion;
+	}
+	
+	public Proyecto() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
 
 	public int getIdProyecto() {
@@ -110,6 +112,5 @@ public class Proyecto {
 	public void setFechaFinalizacion(Date fechaFinalizacion) {
 		this.fechaFinalizacion = fechaFinalizacion;
 	}
-	
 	
 }

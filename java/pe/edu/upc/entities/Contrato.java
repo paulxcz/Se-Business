@@ -9,6 +9,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 @Entity
 @Table(name = "Contrato")
 public class Contrato {
@@ -16,15 +18,12 @@ public class Contrato {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idContrato;
 	
-	@Column(name = "cldContrato", nullable = false)
-	private int cldContrato;
 	@Column(name = "culminacion", length = 60 ,nullable = false)
 	private String culminacion;
 	@Column(name = "especificaciones", length = 160 ,nullable = false)
 	private String especificaciones;
-	@Column(name = "estado", length = 90 ,nullable = false)
-	private String estado;
-	
+
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date dateContrato;
 
 	public Contrato() {
@@ -36,10 +35,8 @@ public class Contrato {
 			Date dateContrato) {
 		super();
 		this.idContrato = idContrato;
-		this.cldContrato = cldContrato;
 		this.culminacion = culminacion;
 		this.especificaciones = especificaciones;
-		this.estado = estado;
 		this.dateContrato = dateContrato;
 	}
 
@@ -49,14 +46,6 @@ public class Contrato {
 
 	public void setIdContrato(int idContrato) {
 		this.idContrato = idContrato;
-	}
-
-	public int getCldContrato() {
-		return cldContrato;
-	}
-
-	public void setCldContrato(int cldContrato) {
-		this.cldContrato = cldContrato;
 	}
 
 	public String getCulminacion() {
@@ -75,17 +64,10 @@ public class Contrato {
 		this.especificaciones = especificaciones;
 	}
 
-	public String getEstado() {
-		return estado;
-	}
-
-	public void setEstado(String estado) {
-		this.estado = estado;
-	}
-
 	public Date getDateContrato() {
 		return dateContrato;
 	}
+
 
 	public void setDateContrato(Date dateContrato) {
 		this.dateContrato = dateContrato;
