@@ -29,5 +29,17 @@ public class MercadologoServiceImpl implements IMercadologoService {
 		// TODO Auto-generated method stub
 		return mR.findAll();
 	}
+	
+	@Override
+	public List<Mercadologo> findByName(String nombreMercadologo) {
+		// TODO Auto-generated method stub
+		return mR.findByName(nombreMercadologo);
+	}
+	
+	@Override
+	public List<Mercadologo> findByNameMercadologoLikeIgnoreCase(String nombreMercadologo) {
+		// TODO Auto-generated method stub
+		return mR.findByNombreMercadologoIgnoreCase(nombreMercadologo);
+	}
 
 }

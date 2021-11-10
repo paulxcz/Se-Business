@@ -9,4 +9,8 @@ public interface IMercadologoService {
 	public Integer insert(Mercadologo mercadologo);
 	
 	List<Mercadologo> list();
+	
+    List<Mercadologo> findByName(String name);
+	
+	public List<Mercadologo> findByNameMercadologoLikeIgnoreCase(String nombreMercadologo);
 }

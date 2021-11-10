@@ -34,7 +34,7 @@ public class EmprendedorController {
 		} catch (Exception e) {
 			model.addAttribute("error", e.getMessage());
 		}
-		return "emprendedor/listEmprendedor";
+		return "emprendedor/listEmprendedores";
 	}
 	
 	@PostMapping("/save")
