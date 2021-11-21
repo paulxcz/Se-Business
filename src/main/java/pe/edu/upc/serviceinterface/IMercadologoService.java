@@ -19,6 +19,8 @@ public interface IMercadologoService {
 	
 	public List<Mercadologo> findByNameMercadologoLikeIgnoreCase(String nombreMercadologo);
 	
+	public List<String[]> merXpro();
+	
 	
 	
 	

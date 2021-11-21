@@ -46,6 +46,7 @@
 						<th scope="col" class="text-center">Rating</th>
 						<th scope="col" class="text-center">Correo</th>
 						<th scope="col" class="text-center">Linkedin</th>
+						<th scope="col" class="text-center">Cantidad de Proyectos Realizados</th>
 						<th scope="col" class="text-center">Operación</th>
 						<th scope="col" class="text-center">Operación</th>
 					</tr>
@@ -58,6 +59,7 @@
 						<td class="text-center" th:text="${mer.ratingMercadologo}"></td>
 						<td class="text-center" th:text="${mer.correoMercadologo}"></td>
 						<td class="text-center" th:text="${mer.linkedinMercadologo}"></td>
+						<td class="text-center" th:text="${mer.cantidadProyectosMercadologo}"></td>
 						<td class="text-center" ><a th:href="@{'/mercadologos/detalle/' + ${mer.idMercadologo}}" class="btn btn-dark">Actualizar</a></td>
 						<td align = "center"><a th:href="@{/mercadologos/delete?id=}+${mer.idMercadologo}" class="btn btn-dark">Eliminar</a></td>
 					</tr>

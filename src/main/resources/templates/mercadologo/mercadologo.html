@@ -76,6 +76,14 @@
 							<div class="alert alert-danger"
 								th:if="${#fields.hasErrors('linkedinMercadologo')}"
 								th:errors="*{linkedinMercadologo}"></div>
+								
+								
+							<label for="numero">CANTIDAD DE PROYECTOS:</label> <input type="text" 
+								th:field="*{cantidadProyectosMercadologo}" class="form-control" id="cantidad de proyectos"></input>
+							<div class="alert alert-danger"
+								th:if="${#fields.hasErrors('cantidadProyectosMercadologo')}"
+								th:errors="*{cantidadProyectosMercadologo}"></div>
+								
 						</div>
 
 					</div>

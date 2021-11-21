@@ -23,12 +23,14 @@ public class Mercadologo {
 	private String correoMercadologo;
 	@Column(name = "linkedinMercadologo", length = 80, nullable = false)
 	private String linkedinMercadologo;
+	@Column(name = "cantidadProyectosMercadologo", length = 80, nullable = false)
+	private int cantidadProyectosMercadologo;	
 	public Mercadologo() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 	public Mercadologo(int idMercadologo, String nombreMercadologo, String numeroMercadologo, int ratingMercadologo,
-			String correoMercadologo, String linkedinMercadologo) {
+			String correoMercadologo, String linkedinMercadologo, int cantidadProyectosMercadologo) {
 		super();
 		this.idMercadologo = idMercadologo;
 		this.nombreMercadologo = nombreMercadologo;
@@ -36,6 +38,7 @@ public class Mercadologo {
 		this.ratingMercadologo = ratingMercadologo;
 		this.correoMercadologo = correoMercadologo;
 		this.linkedinMercadologo = linkedinMercadologo;
+		this.cantidadProyectosMercadologo = cantidadProyectosMercadologo;
 	}
 	public int getIdMercadologo() {
 		return idMercadologo;
@@ -72,6 +75,12 @@ public class Mercadologo {
 	}
 	public void setLinkedinMercadologo(String linkedinMercadologo) {
 		this.linkedinMercadologo = linkedinMercadologo;
+	}
+	public int getCantidadProyectosMercadologo() {
+		return cantidadProyectosMercadologo;
+	}
+	public void setCantidadProyectosMercadologo(int cantidadProyectosMercadologo) {
+		this.cantidadProyectosMercadologo = cantidadProyectosMercadologo;
 	}
 
 }

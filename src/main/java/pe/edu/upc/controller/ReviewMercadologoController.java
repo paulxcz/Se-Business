@@ -73,4 +73,5 @@ public class ReviewMercadologoController {
 	public String listReports(Model model) {
 		return "/reports/reports";
 	}
+	
 }

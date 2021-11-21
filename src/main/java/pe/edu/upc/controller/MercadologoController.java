@@ -120,4 +120,11 @@ public class MercadologoController {
 		return "mercadologo/find";
 
 	}
+	
+	
+	@RequestMapping("/reporte5")
+	public String mercadologosXpro(Map<String,Object> model) {
+		model.put("listMerXRev",mService.merXpro());
+		return "reports/proyectosMercadologosOrdenados";
+	}
 }
