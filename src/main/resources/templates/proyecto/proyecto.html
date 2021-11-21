@@ -81,6 +81,13 @@
 								th:errors="*{descripcion}"></div>
 
 
+						<div class="form-group">
+							<label for="salario">PAGO:</label> <input type="number"
+								required th:field="*{pago}" class="form-control" id="salario"></input>
+						</div>
+						<div class="alert alert-danger"
+							th:if="${#fields.hasErrors('pago')}" th:errors="*{pago}"></div>
+
 
 						<div class="form-group">
 							<label for="estado">ESTADO:</label> 

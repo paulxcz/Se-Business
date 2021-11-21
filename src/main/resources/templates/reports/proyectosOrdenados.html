@@ -25,32 +25,19 @@
 		<div class="content container">
 
 			<div class="d-flex">
-				<h3 class="title-content">Lista de Proyectos</h3>
-				<a th:href="@{/proyectos/new}" class="btn btn-warning">Nuevo</a>
+				<h3 class="title-content">Reporte proyectos por emprendedor</h3>
 			</div>
 			<table class="table">
 				<thead class="thead-light">
 					<tr>
-						<th scope="col" class="text-center">Código</th>
-						<th scope="col" class="text-center">Proyecto</th>
-						<th scope="col" class="text-center">Anuncio</th>
 						<th scope="col" class="text-center">Emprendedor</th>
-						<th scope="col" class="text-center">Descripcion</th>
-						<th scope="col" class="text-center">Estado</th>
-						<th scope="col" class="text-center">Fecha de finaliacion</th>
-						<th scope="col" class="text-center">Pago</th>
+						<th scope="col" class="text-center">Número de proyectos</th>						
 					</tr>
 				</thead>
 				<tbody>
-					<tr th:each="p : ${listaProyectos}">
-						<td class="text-center" th:text="${p.idProyecto}"></td>
-						<td class="text-center" th:text="${p.nombre}"></td>
-						<td class="text-center" th:text="${p.anuncio}"></td>
-						<td class="text-center" th:text="${p.emprendedor.nombreEmprendedor}"></td>
-						<td class="text-center" th:text="${p.descripcion}"></td>
-						<td class="text-center" th:text="${p.estado}"></td>
-						<td class="text-center" th:text="${p.fechaFinalizacion}"></td>
-						<td class="text-center" th:text="${p.pago}"></td>
+					<tr th:each="rep : ${listProyectosXempre}">
+						<td class="text-center" th:text="${rep[0]}"></td>
+						<td class="text-center" th:text="${rep[1]}"></td>						
 					</tr>
 				</tbody>
 			</table>

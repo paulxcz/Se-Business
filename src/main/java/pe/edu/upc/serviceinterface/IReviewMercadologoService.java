@@ -8,4 +8,6 @@ public interface IReviewMercadologoService {
 
 	public Integer insert(ReviewMercadologo review);
 	List<ReviewMercadologo> list();
+	
+	public List<String[]> merXrev();
 }

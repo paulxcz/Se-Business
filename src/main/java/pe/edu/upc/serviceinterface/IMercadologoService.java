@@ -18,4 +18,8 @@ public interface IMercadologoService {
 	public void delete(int idMercadologo);
 	
 	public List<Mercadologo> findByNameMercadologoLikeIgnoreCase(String nombreMercadologo);
+	
+	
+	
+	
 }

@@ -1,5 +1,7 @@
 package pe.edu.upc.controller;
 
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -57,4 +59,20 @@ public class ReviewEmprendedorController {
 			return "redirect:/reviewEmprendedores/list";
 		}
 	}
+	
+	
+	@RequestMapping("/reporte3")
+	public String emprendedoresXreview(Map<String,Object> model) {
+		model.put("listEmpXRev",rService.empXrev());
+		return "reports/EmprendedoresMaxReviews";
+	}
+	
+	
+	@RequestMapping("/reports")
+	public String listReports(Model model) {
+		return "/reports/reports";
+	}
+	
+	
+	
 }

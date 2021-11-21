@@ -41,4 +41,16 @@ public class EmprendedorServiceImpl implements IEmprendedorService{
 	public Optional<Emprendedor> listarId(int idEmprendedor){
 		return eR.findById(idEmprendedor);
 	}
+	
+	@Override
+	public List<Emprendedor> findByName(String nombreEmprendedor) {
+		// TODO Auto-generated method stub
+		return eR.findByName(nombreEmprendedor);
+	}
+	
+	@Override
+	public List<Emprendedor> findByNameEmprendedorLikeIgnoreCase(String nombreEmprendedor) {
+		// TODO Auto-generated method stub
+		return eR.findByNombreEmprendedorIgnoreCase(nombreEmprendedor);
+	}
 }

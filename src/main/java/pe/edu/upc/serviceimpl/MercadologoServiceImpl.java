@@ -54,4 +54,9 @@ public class MercadologoServiceImpl implements IMercadologoService {
 	public void delete(int idMercadologo) {
 		mR.deleteById(idMercadologo);
 	}
+	
+	
+	
+
+	
 }

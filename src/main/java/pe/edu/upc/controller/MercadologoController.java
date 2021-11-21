@@ -6,6 +6,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.expression.ParseException;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -22,6 +23,7 @@ import pe.edu.upc.entities.Mercadologo;
 import pe.edu.upc.serviceinterface.IMercadologoService;
 
 @Controller
+@Secured({"ROLE_ADMIN","ROLE_MERCADOLOGO"})
 @RequestMapping("/mercadologos")
 public class MercadologoController {
 
@@ -60,9 +62,9 @@ public class MercadologoController {
 				model.addAttribute("mensaje", "Se guardó correctamente");
 				status.setComplete();
 			}
-			model.addAttribute("mercadologo", new Mercadologo());
-			return "redirect:/mercadologos/list";
 		}
+		model.addAttribute("mercadologo", new Mercadologo());
+		return "redirect:/mercadologos/list";
 	}
 	
 	@RequestMapping("/delete")

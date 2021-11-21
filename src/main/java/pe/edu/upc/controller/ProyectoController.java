@@ -1,12 +1,16 @@
 package pe.edu.upc.controller;
 
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.support.SessionStatus;
 
@@ -22,6 +26,7 @@ public class ProyectoController {
 	@Autowired
 	private IEmprendedorService eService;
 	
+	@Secured({"ROLE_ADMIN","ROLE_EMPRENDEDORES"})
 	@GetMapping("/new")
 	public String newProyecto(Model model) {
 		model.addAttribute("listaEmprendedores", eService.list());
@@ -54,5 +59,24 @@ public class ProyectoController {
 				return "redirect://proyectos/new";
 			}
 		}
+	}
+	
+	@RequestMapping("/reporte1")
+	public String proyectosXempre(Map<String, Object> model) {
+		model.put("listProyectosXempre", pService.proyectosXempre());
+		return "reports/proyectosOrdenados";
+	}
+	
+	@RequestMapping("/reports")
+	public String listReports(Model model) {
+		return "/reports/reports";
+	}
+	
+	@RequestMapping("/reporte4")
+	public String reporteMayor(Map<String,Object>model) {
+		//double value = 1200.00;
+			model.put("ProyectosMayores",pService.getCantidadMayor(1200.00));
+			model.put("ProyectosMenores", pService.getCantidadMenor(1200.00));
+		return "reports/ProyectosPagos";
 	}
 }

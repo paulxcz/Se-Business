@@ -14,7 +14,7 @@
 </head>
 <body>
 
-	<div th:fragment="sidebar" id="panel" class="activepanel ">
+	<div th:fragment="sidebar" id="panel" class="activepanel " style="background: #FFAB4C">
 		<div id="cpanel1head" style="margin: 0px; height: 10vh;" class="row">
 			<h2 id="titulopanel" class="col-lg-10">E-BUSINESS</h2>
 			<i id="iconpanel" class="fa fa-bars col-lg-2"></i>
@@ -58,6 +58,15 @@
 				
 				</a>
 				<p>Soportes</p>
+			</div>
+			<div class="panelitem">
+				<a th:href="@{/proyectos/reports}"><i class="fa fa-file" aria-hidden="true"
+				style="color: #5450D6;"></i>
+				
+				</a>
+			
+				<p>Reportes</p>
+				
 			</div>
 		
 		</div>

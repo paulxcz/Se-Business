@@ -1,14 +1,18 @@
 package pe.edu.upc.controller;
 
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.expression.ParseException;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,6 +23,7 @@ import pe.edu.upc.entities.Emprendedor;
 import pe.edu.upc.serviceinterface.IEmprendedorService;
 
 @Controller
+@Secured({"ROLE_ADMIN","ROLE_EMPRENDEDORES"})
 @RequestMapping("/emprendedores")
 public class EmprendedorController {
 
@@ -53,13 +58,15 @@ public class EmprendedorController {
 			System.out.println(e.getMessage());
 			model.put("mensaje", "No se puedo eliminar el emprendedor");
 		}
-		return "/emprendedor/listEmprendedores";
+		
+		model.put("listEmprendedores", eService.list());
+		return "redirect:/emprendedores/list";
 	}
 	
 	@GetMapping("/detalle/{id}")
-	public String detailsCategory(@PathVariable(value="id")int id, Model model) {
+	public String detailsEmprendedor(@PathVariable(value="id")int idEmprendedor, Model model) {
 		try {
-			Optional<Emprendedor> emprendedor = eService.listarId(id);
+			Optional<Emprendedor> emprendedor = eService.listarId(idEmprendedor);
 			if(!emprendedor.isPresent()) {
 				model.addAttribute("info", "Emprendedor no existe");
 				return "redirect:/emprendedor/list";
@@ -87,8 +94,31 @@ public class EmprendedorController {
 				model.addAttribute("mensaje", "Se guardó correctamente");
 				status.setComplete();
 			}
-			model.addAttribute("emprendedor", new Emprendedor());
-			return "redirect:/emprendedores/list";
 		}
+		model.addAttribute("emprendedor", new Emprendedor());
+		return "redirect:/emprendedores/list";
 	}
+	
+	
+	@RequestMapping("/find")
+	public String find(Map<String, Object> model, @ModelAttribute Emprendedor emprendedor) throws ParseException {
+
+		List<Emprendedor> listEmprendedor;
+
+		emprendedor.setNombreEmprendedor(emprendedor.getNombreEmprendedor());
+		listEmprendedor = eService.findByName(emprendedor.getNombreEmprendedor());
+
+		if (listEmprendedor.isEmpty()) {
+			listEmprendedor = eService.findByNameEmprendedorLikeIgnoreCase(emprendedor.getNombreEmprendedor());
+		}
+
+		if (listEmprendedor.isEmpty()) { 
+			 
+			model.put("mensaje", "No se encontró");
+		}
+		model.put("listEmprendedor", listEmprendedor);
+		return "emprendedor/find";
+
+	}
+	
 }

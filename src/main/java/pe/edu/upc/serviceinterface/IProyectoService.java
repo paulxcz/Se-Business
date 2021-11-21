@@ -9,4 +9,9 @@ public interface IProyectoService {
 	List<Proyecto> list();
 	
 	Proyecto listarId(int idProyecto);
+	public List<String[]> proyectosXempre();
+	
+	public List<String[]> getCantidadMayor(double pago);
+	
+	public List<String[]> getCantidadMenor(double pago);
 }

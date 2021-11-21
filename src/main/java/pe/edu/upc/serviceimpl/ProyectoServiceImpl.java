@@ -36,5 +36,20 @@ public class ProyectoServiceImpl implements IProyectoService{
 		Optional<Proyecto> op = pR.findById(idProyecto);
 		return op.isPresent() ? op.get() : new Proyecto();
 	}	
+	
+	@Override
+	public List<String[]> proyectosXempre(){
+		return pR.proyectosXempre();
+	}
+	
+	@Override
+	public List<String[]> getCantidadMayor(double pago) {
+		return pR.reporteMayorPago(pago);
+	}	
+	
+	@Override
+	public List<String[]> getCantidadMenor(double pago) {
+		return pR.reporteMenorPago(pago);
+	}	
 
 }
