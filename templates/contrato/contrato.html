@@ -12,6 +12,7 @@
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="/css/bootstrap.min.css">
 <link rel="stylesheet" href="/css/dive.css">
+
 </head>
 
 <body>
@@ -37,24 +38,41 @@
 							readonly th:field="*{idContrato}"></input>
 
 						<div class="form-group">
-		
-							<label for="empresa">CULMINACION:</label> <input type="text" required
-								th:field="*{culminacion}" class="form-control" id="culminacion"></input>
+
+							<label for="empresa">FECHA ESTIMADA DE CULMINACION:</label> <input
+								type="date" required th:field="*{fechaCulminacionEstimada}"
+								class="form-control" id="fechaCulminacionEstimada"></input>
 							<div class="alert alert-danger"
-								th:if="${#fields.hasErrors('culminacion')}"
-								th:errors="*{culminacion}"></div>
-								
-                            <label for="negocio">ESPECIFICACIONES:</label>
-								<textarea rows="" cols="" th:field="*{especificaciones}" class="form-control" required="required" ></textarea>
+								th:if="${#fields.hasErrors('fechaCulminacionEstimada')}"
+								th:errors="*{fechaCulminacionEstimada}"></div>
+
+							<label for="negocio">ESPECIFICACIONES:</label>
+							<textarea rows="" cols="" th:field="*{especificaciones}"
+								class="form-control" required="required"></textarea>
 							<div class="alert alert-danger"
 								th:if="${#fields.hasErrors('especificaciones')}"
 								th:errors="*{especificaciones}"></div>
-								
-							<label for="negocio">FECHA CONTRATO:</label> <input type="date" required
-								th:field="*{dateContrato}" class="form-control" id="dateContrato" readonly="readonly"></input>
+
+							<label for="negocio">FECHA CONTRATO:</label> <input type="date"
+								required th:field="*{dateContrato}" class="form-control"
+								id="dateContrato" readonly="readonly"></input>
 							<div class="alert alert-danger"
 								th:if="${#fields.hasErrors('dateContrato')}"
 								th:errors="*{dateContrato}"></div>
+
+							<label for="emprendedor">EMPRENDEDOR:</label> <select
+								class="form-control" th:field="*{emprendedor.idEmprendedor}">
+								<option th:each="e: ${listaEmprendedores}"
+									th:value="${e.idEmprendedor}" th:text="${e.nombreEmprendedor}"
+									th:selected="(${e.idEmprendedor} == *{emprendedor.idEmprendedor})"></option>
+							</select>
+							
+							<label for="mercadologo">MERCADOLOGO:</label> <select
+								class="form-control" th:field="*{mercadologo.idMercadologo}">
+								<option th:each="m: ${listaMercadologos}"
+									th:value="${m.idMercadologo}" th:text="${m.nombreMercadologo}"
+									th:selected="(${m.idMercadologo} == *{mercadologo.idMercadologo})"></option>
+							</select>
 						</div>
 
 					</div>
@@ -70,7 +88,7 @@
 		</div>
 	</div>
 
-	
+
 	<script src="/js/popper.min.js"></script>
 	<script src="/js/jquery-3.3.1.slim.min.js"></script>
 	<script src="/js/bootstrap.min.js"></script>

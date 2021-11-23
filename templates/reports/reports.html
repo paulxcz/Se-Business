@@ -7,7 +7,7 @@
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <link rel="icon"
 	href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKoAAACqCAMAAAAKqCSwAAAAb1BMVEUAAAD////8/PxdXV0WFhbf39+Dg4MEBATr6+uxsbEtLS1cXFz29vYRERE4ODimpqZFRUXHx8fNzc3Y2NiLi4shISHo6OhAQEDT09O5ublVVVWTk5MbGxujo6Nvb28SEhI0NDQmJiZra2uYmJh+fn794qvdAAADhElEQVR4nO2bXXOqMBCGSRTBGhUQED+r1v//G09ATy/ObHAk7+bgzD4XnU6r6eOSJptNEkWCIAiCIAiCIAiCIAiCIAiCIAiCMIwk+Q9/c/om38tfzaC6SbSv4/fYNPluXZ73X8uQoq3qRGk1iLRZn1cBdZNo8b6qbum+M0W5CtULPKKqHr5mNwkTWh/Vh6790txCyPqqPm2LBX83AKh2snr+9RGqnWx6Zg4sSFW1jcyPrHMCTLWVbVaMpkhV206dfYiqbSjdf4iqxfC5glVtXNn6ADqqWsVcAyxa1TaWM82ycFXb2uFTVK0sz78Wg6pWm+OHqHJ1gUGqf9cATgzHDOtQNakbo5+x6wnrPJSqVj/Vl5NVtrivG9MvyzAROFTvr9K5aVZu3LJarYOpzvpUk0fJ4nhrlLPTMvTWIarPN1rZ0jjDWo5H9WGbxXQnsGPrdEyq7buvhavDLtCrFz9V+6qqIV21OmFFvVXtyy415WqTQXQP8FXtGqBBD63eqpY5HdbZCFW31JCl1W6EqmRY8Z0VoNqWaCnQExYkqkd6IgCPrBDVaE32gDtSFKOaRGdS9Wd8qnYMIEcr8BCAUa1iSjXHJgEY1SWRtGjVfI9QNdpRjcTYNTZIlRoCVD1K1ROpWokqQwcYpSqZB47y3yrJqUbAK0GM6nFDNVJga8IY1QuRXNuJdXyzFb28gheDMFE9kJkVuMACUaVSAPuT2whTayoHxBcuIarU84fPABDVilpawdNViGpJlyzQexeAQtAqpXoqvhToH9UlMal2XfUKFUVE9cdRtETXgbxLwcmBfvpanUdWCv4+0aZKpejn76HavmCbO0Q5doMGqna/vR5cGywsu9eDo7rcHmLnHhvL+QW3qptltVoc8v6dyxvc1LUdvJk72eVFbB4fyPn0VYEtrPSpvuLVNvsEb+pU1T28/BzopUq/qhdmy2DKc3YFvQ3EpWofP89BK4YjYfWFxZQhqmwHGPGqZyZT/ElL/OkKHlW7oOI7bY09wKxKxnPh0GPhhvW8PU5Vq5jxoDVQ1baxY75vgVG1KUzNfdkComrfb07sV1j8Vduc0MyzAPfD/FS73DVdhxD1UH2m2LqYXQLduOvuBr7Jr22dz7Jw9xiHHWA26SY/3ffXwNduq8mbLPbZ6jr9D5eDPQhv21OccBBcURAEQRAEQRAEQRAEQRAEQRAEQfiHP/sXNtQqYCthAAAAAElFTkSuQmCC">
-<title>Web</title>
+<title>Reportes e-Business</title>
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -25,31 +25,89 @@
 		<div class="content container">
 
 			<div class="d-flex">
-				<h3 class="title-content">Lista de Contratos</h3>
-				<a th:href="@{/contratos/new}" class="btn btn-warning">Nuevo</a>
+				<h3 class="title-content">Reportes</h3>
 			</div>
-			<table class="table">
-				<thead class="thead-light">
-					<tr>
-						<th scope="col" class="text-center">ID</th>
-						<th scope="col" class="text-center">Fecha culminación estimada</th>
-						<th scope="col" class="text-center">Especificaciones</th>
-						<th scope="col" class="text-center">Fecha Contrato</th>
-						<th scope="col" class="text-center">Emprendedor</th>
-						<th scope="col" class="text-center">Mercadologo</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr th:each="co : ${listaContratos}">
-						<td class="text-center" th:text="${co.idContrato}"></td>
-						<td class="text-center" th:text="${co.fechaCulminacionEstimada}"></td>
-						<td class="text-center" th:text="${co.especificaciones}"></td>
-						<td class="text-center" th:text="${co.dateContrato}"></td>
-						<td class="text-center" th:text="${co.emprendedor.nombreEmprendedor}"></td>
-						<td class="text-center" th:text="${co.mercadologo.nombreMercadologo}"></td>
-					</tr>
-				</tbody>
-			</table>
+
+			<div class="content container">
+
+				<div class="creportes d-flex justify-content-around">
+
+					<div class="cproyecto ">
+
+						<h3 class="tproyecto ">Proyectos por Emprendedor</h3>
+
+						<p class="dproyecto ">Lista de Emprendedores con más proyectos
+							publicados</p>
+
+						<a class="lnikp " th:href="@{/proyectos/reporte1}">Ver Reporte</a>
+
+
+					</div>
+
+					<div class="cproyecto ">
+
+						<h3 class="tproyecto ">Calificación por Mercadologo</h3>
+
+						<p class="dproyecto ">Lista de Mercadologos con mayor
+							calificación</p>
+
+						<a class="lnikp " th:href="@{/reviewMercadologos/reporte2}">Ver
+							Reporte</a>
+					</div>
+
+				</div>
+
+				<div class="creportes d-flex justify-content-around">
+
+					<div class="cproyecto ">
+
+						<h3 class="tproyecto ">Calificación por Emprendedor</h3>
+
+						<p class="dproyecto ">Lista de Emprendedores con mayor
+							calificación</p>
+
+						<a class="lnikp " th:href="@{/reviewEmprendedores/reporte3}">Ver
+							Reporte</a>
+					</div>
+
+
+					<div class="cproyecto ">
+
+						<h3 class="tproyecto ">Mercadologos/Proyectos realizados</h3>
+
+						<p class="dproyecto ">Mercadologos con más proyectos
+							realizados</p>
+
+						<a class="lnikp " th:href="@{/contratos/reporte6}">Ver Reporte</a>
+					</div>
+
+				</div>
+
+
+				<div class="creportes d-flex justify-content-around">
+					<div class="cproyecto ">
+
+						<h3 class="tproyecto ">Salarios de Proyecto</h3>
+
+						<p class="dproyecto ">Cantidad de mayores y menores pagos</p>
+
+						<a class="lnikp " th:href="@{/proyectos/reporte4/1200}">Ver Reporte</a>
+					</div>
+
+				</div>
+
+			</div>
+
+
+
+
+
+
+
+
+
+
+
 		</div>
 		<div th:if="${mensaje}" class="alert alert-danger">
 			<p th:text="${mensaje}"></p>

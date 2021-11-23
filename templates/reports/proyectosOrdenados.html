@@ -25,28 +25,19 @@
 		<div class="content container">
 
 			<div class="d-flex">
-				<h3 class="title-content">Lista de Contratos</h3>
-				<a th:href="@{/contratos/new}" class="btn btn-warning">Nuevo</a>
+				<h3 class="title-content">Reporte proyectos por emprendedor</h3>
 			</div>
 			<table class="table">
 				<thead class="thead-light">
 					<tr>
-						<th scope="col" class="text-center">ID</th>
-						<th scope="col" class="text-center">Fecha culminación estimada</th>
-						<th scope="col" class="text-center">Especificaciones</th>
-						<th scope="col" class="text-center">Fecha Contrato</th>
 						<th scope="col" class="text-center">Emprendedor</th>
-						<th scope="col" class="text-center">Mercadologo</th>
+						<th scope="col" class="text-center">Número de proyectos</th>						
 					</tr>
 				</thead>
 				<tbody>
-					<tr th:each="co : ${listaContratos}">
-						<td class="text-center" th:text="${co.idContrato}"></td>
-						<td class="text-center" th:text="${co.fechaCulminacionEstimada}"></td>
-						<td class="text-center" th:text="${co.especificaciones}"></td>
-						<td class="text-center" th:text="${co.dateContrato}"></td>
-						<td class="text-center" th:text="${co.emprendedor.nombreEmprendedor}"></td>
-						<td class="text-center" th:text="${co.mercadologo.nombreMercadologo}"></td>
+					<tr th:each="rep : ${listProyectosXempre}">
+						<td class="text-center" th:text="${rep[0]}"></td>
+						<td class="text-center" th:text="${rep[1]}"></td>						
 					</tr>
 				</tbody>
 			</table>

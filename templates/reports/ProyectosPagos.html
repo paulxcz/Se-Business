@@ -25,41 +25,31 @@
 		<div class="content container">
 
 			<div class="d-flex">
-				<h3 class="title-content">Lista de Mercadologo</h3>
-				<a th:href="@{/reviewMercadologos/list}" class="btn btn-dark">Calificaciones</a>
-				<a th:href="@{/mercadologos/new}" class="btn btn-danger">Nuevo</a>
-				<a th:href="@{/mercadologos/find}" class="btn btn-secondary">Buscar</a>
-				<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
-					data-parent="#accordionSidebar">
-					<div class="bg-white py-2 collapse-inner rounded">
-						<a class="collapse-item" th:href="@{/mercadologos/listMercadologo}">Buscar
-							Mercadologos</a>
-					</div>
-				</div>
+				<h3 class="title-content">Reporte de Mejores Pagos</h3>
+			</div>
+			<div class="d-flex">
+				<h3 class="title-content">Salario de S/.<a id="valor"></a></h3>
+			</div>
+			<div class="form-group">
+				<label for="valor">SALARIO:</label> <input type="number"
+				class="form-control" id="inputValue"></input>
+				<a class="btn btn-secondary" id="btnSetInput">Buscar</a>
 			</div>
 			<table class="table">
 				<thead class="thead-light">
 					<tr>
-						<th scope="col" class="text-center">Código</th>
-						<th scope="col" class="text-center">Nombre</th>
-						<th scope="col" class="text-center">Numero</th>
-						<th scope="col" class="text-center">Rating</th>
-						<th scope="col" class="text-center">Correo</th>
-						<th scope="col" class="text-center">Linkedin</th>
-						<th scope="col" class="text-center">Operación</th>
-						<th scope="col" class="text-center">Operación</th>
+						<th scope="col" class="text-center">Salarios</th>
+						<th scope="col" class="text-center">Cantidad</th>
 					</tr>
 				</thead>
 				<tbody>
-					<tr th:each="mer : ${listaMercadologos}">
-						<td class="text-center" th:text="${mer.idMercadologo}"></td>
-						<td class="text-center" th:text="${mer.nombreMercadologo}"></td>
-						<td class="text-center" th:text="${mer.numeroMercadologo}"></td>
-						<td class="text-center" th:text="${mer.ratingMercadologo}"></td>
-						<td class="text-center" th:text="${mer.correoMercadologo}"></td>
-						<td class="text-center" th:text="${mer.linkedinMercadologo}"></td>
-						<td class="text-center" ><a th:href="@{'/mercadologos/detalle/' + ${mer.idMercadologo}}" class="btn btn-dark">Actualizar</a></td>
-						<td align = "center"><a th:href="@{/mercadologos/delete?id=}+${mer.idMercadologo}" class="btn btn-dark">Eliminar</a></td>
+					<tr th:each="rep : ${ProyectosMayores}">
+						<td class="text-center">Proyectos con Salario Mayor</td>
+						<td class="text-center" th:text="${rep[0]}"></td>
+					</tr>
+						<tr th:each="rep : ${ProyectosMenores}">
+						<td class="text-center">Proyectos con Salario Menor</td>
+						<td class="text-center" th:text="${rep[0]}"></td>
 					</tr>
 				</tbody>
 			</table>
@@ -75,6 +65,7 @@
 	<script src="/js/jquery-3.3.1.slim.min.js"></script>
 	<script src="/js/bootstrap.min.js"></script>
 	<script src="/js/dive.js"></script>
+	<script src="/js/getInputValue.js"></script>
 </body>
 
 </html>

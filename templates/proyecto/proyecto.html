@@ -38,53 +38,59 @@
 						</div>
 
 						<div class="form-group">
-							<label for="nombre">NOMBRE DEL PROYECTO:</label> <input type="text" 
-							pattern="[A-Za-z]{1,32}" required
-								th:field="*{nombre}" class="form-control" id="nombre"></input>
+							<label for="nombre">NOMBRE DEL PROYECTO:</label> <input
+								type="text" pattern="^[a-zA-Z ]*$" required th:field="*{nombre}"
+								class="form-control" id="nombre"></input>
 						</div>
 						<div class="alert alert-danger"
 							th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></div>
 
 
 						<div class="form-group">
-							<label for="anuncio">TITULO DE ANUNCIO:</label> <input type="text" 
-							pattern="[A-Za-z]{1,64}" required
+							<label for="anuncio">TITULO DE ANUNCIO:</label> <input
+								type="text" pattern="^[a-zA-Z ]*$" required
 								th:field="*{anuncio}" class="form-control" id="anuncio"></input>
 						</div>
 						<div class="alert alert-danger"
 							th:if="${#fields.hasErrors('anuncio')}" th:errors="*{anuncio}"></div>
-							
+
 						<div class="form-group">
-							<label for="fecha">FECHA DE FINALIZACION:</label> <input type="date" required
-								th:field="*{fechaFinalizacion}" class="form-control" id="fecha"></input>
+							<label for="fecha">FECHA DE FINALIZACION:</label> <input
+								type="date" required th:field="*{fechaFinalizacion}"
+								class="form-control" id="fecha"></input>
 						</div>
 
-				</div>
-						<div class="col-6">
-							<div class="form-group">
-								<label for="emprendedor">EMPRENDEDOR:</label> <select
-									class="form-control" th:field="*{emprendedor.idEmprendedor}">
-									<option th:each="e: ${listaEmprendedores}"
-										th:value="${e.idEmprendedor}" th:text="${e.nombreEmprendedor}"
-										th:selected="(${e.idEmprendedor} == *{emprendedor.idEmprendedor})"></option>
-								</select>
-							</div>
-
-
-							<div class="form-group">
-								<label for="descripcion">DESCRIPCION DE PROYECTO:</label> <input type="text"
-									required th:field="*{descripcion}" class="form-control"
-									id="descripcion"></input>
-							</div>
-							<div class="alert alert-danger"
-								th:if="${#fields.hasErrors('descripcion')}"
-								th:errors="*{descripcion}"></div>
-
+					</div>
+					<div class="col-6">
+						<div class="form-group">
+							<label for="emprendedor">EMPRENDEDOR:</label> <select
+								class="form-control" th:field="*{emprendedor.idEmprendedor}">
+								<option th:each="e: ${listaEmprendedores}"
+									th:value="${e.idEmprendedor}" th:text="${e.nombreEmprendedor}"
+									th:selected="(${e.idEmprendedor} == *{emprendedor.idEmprendedor})"></option>
+							</select>
+						</div>
 
 
 						<div class="form-group">
-							<label for="estado">ESTADO:</label> 
-							<select th:field="*{estado}" required="required" class="form-control" >
+							<label for="descripcion">DESCRIPCION DE PROYECTO:</label> <input
+								type="text" required th:field="*{descripcion}"
+								class="form-control" id="descripcion"></input>
+						</div>
+						<div class="alert alert-danger"
+							th:if="${#fields.hasErrors('descripcion')}"
+							th:errors="*{descripcion}"></div>
+
+						<div class="form-group">
+							<label for="salario">PAGO:</label> <input type="number" required
+								th:field="*{pago}" class="form-control" id="salario"></input>
+						</div>
+						<div class="alert alert-danger"
+							th:if="${#fields.hasErrors('pago')}" th:errors="*{pago}"></div>
+
+						<div class="form-group">
+							<label for="estado">ESTADO:</label> <select th:field="*{estado}"
+								required="required" class="form-control">
 								<option value="Abierto">Abierto</option>
 								<option value="Cerrado">Cerrado</option>
 							</select>
