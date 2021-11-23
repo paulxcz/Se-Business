@@ -28,4 +28,12 @@ public class ReviewMercadologoServiceImpl implements IReviewMercadologoService{
 		// TODO Auto-generated method stub
 		return rR.findAll();
 	}
+	
+	
+	
+	@Override
+	public List<String[]> merXrev() {
+		// TODO Auto-generated method stub
+		return rR.merXrev();
+	}
 }

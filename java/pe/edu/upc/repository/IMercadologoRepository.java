@@ -22,4 +22,9 @@ public interface IMercadologoRepository extends JpaRepository<Mercadologo, Integ
 	
 
 	public List<Mercadologo> findByNombreMercadologoIgnoreCase(String nombreMercadologo);
+	
+	
+	
+
+	
 }

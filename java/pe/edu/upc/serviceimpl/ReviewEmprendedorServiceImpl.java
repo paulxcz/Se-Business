@@ -28,4 +28,12 @@ public class ReviewEmprendedorServiceImpl implements IReviewEmprendedorService{
 		// TODO Auto-generated method stub
 		return rR.findAll();
 	}
+	
+	
+	@Override
+	public List<String[]> empXrev() {
+		// TODO Auto-generated method stub
+		return rR.empXrev();
+	}
+	
 }

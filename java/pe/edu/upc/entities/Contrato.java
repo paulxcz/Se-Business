@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import org.springframework.format.annotation.DateTimeFormat;
@@ -18,27 +20,39 @@ public class Contrato {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idContrato;
 	
-	@Column(name = "culminacion", length = 60 ,nullable = false)
-	private String culminacion;
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private Date fechaCulminacionEstimada;
+	
 	@Column(name = "especificaciones", length = 160 ,nullable = false)
 	private String especificaciones;
 
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date dateContrato;
+	
+	@ManyToOne
+	@JoinColumn(name="idEmprendedor", nullable = false)
+	private Emprendedor emprendedor;
+	
+	@ManyToOne
+	@JoinColumn(name="idMercadologo", nullable = false)
+	private Mercadologo mercadologo;
 
 	public Contrato() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-
-	public Contrato(int idContrato, int cldContrato, String culminacion, String especificaciones, String estado,
-			Date dateContrato) {
+	
+	public Contrato(int idContrato, Date fechaCulminacionEstimada, String especificaciones, Date dateContrato,
+			Emprendedor emprendedor, Mercadologo mercadologo) {
 		super();
 		this.idContrato = idContrato;
-		this.culminacion = culminacion;
+		this.fechaCulminacionEstimada = fechaCulminacionEstimada;
 		this.especificaciones = especificaciones;
 		this.dateContrato = dateContrato;
+		this.emprendedor = emprendedor;
+		this.mercadologo = mercadologo;
 	}
+
 
 	public int getIdContrato() {
 		return idContrato;
@@ -48,12 +62,13 @@ public class Contrato {
 		this.idContrato = idContrato;
 	}
 
-	public String getCulminacion() {
-		return culminacion;
+	
+	public Date getFechaCulminacionEstimada() {
+		return fechaCulminacionEstimada;
 	}
 
-	public void setCulminacion(String culminacion) {
-		this.culminacion = culminacion;
+	public void setFechaCulminacionEstimada(Date fechaCulminacionEstimada) {
+		this.fechaCulminacionEstimada = fechaCulminacionEstimada;
 	}
 
 	public String getEspecificaciones() {
@@ -72,5 +87,23 @@ public class Contrato {
 	public void setDateContrato(Date dateContrato) {
 		this.dateContrato = dateContrato;
 	}
+	
+
+	public Emprendedor getEmprendedor() {
+		return emprendedor;
+	}
+
+	public void setEmprendedor(Emprendedor emprendedor) {
+		this.emprendedor = emprendedor;
+	}
+
+	public Mercadologo getMercadologo() {
+		return mercadologo;
+	}
+
+	public void setMercadologo(Mercadologo mercadologo) {
+		this.mercadologo = mercadologo;
+	}
+
 
 }

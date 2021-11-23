@@ -14,4 +14,9 @@ public interface IEmprendedorService {
 	List<Emprendedor> list();
 	
 	Optional<Emprendedor> listarId(int idEmprendedor);
+	
+	List<Emprendedor> findByName(String name);
+	
+	public List<Emprendedor> findByNameEmprendedorLikeIgnoreCase(String nombreEmprendedor);
+
 }

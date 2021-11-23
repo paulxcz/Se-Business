@@ -8,4 +8,6 @@ public interface IContratoService {
 
 	public Integer insert(Contrato contrato);
 	List<Contrato> list();
+	
+	public List<String[]> mercadologosConMasProyectos();
 }

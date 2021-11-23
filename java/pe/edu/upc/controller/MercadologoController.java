@@ -6,6 +6,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.expression.ParseException;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -15,12 +16,14 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.support.SessionStatus;
 
 import pe.edu.upc.entities.Mercadologo;
 import pe.edu.upc.serviceinterface.IMercadologoService;
 
 @Controller
+@Secured({"ROLE_ADMIN","ROLE_MERCADOLOGO"})
 @RequestMapping("/mercadologos")
 public class MercadologoController {
 
@@ -59,10 +62,25 @@ public class MercadologoController {
 				model.addAttribute("mensaje", "Se guardó correctamente");
 				status.setComplete();
 			}
-			model.addAttribute("mercadologo", new Mercadologo());
-			return "redirect:/mercadologos/list";
 		}
+		model.addAttribute("mercadologo", new Mercadologo());
+		return "redirect:/mercadologos/list";
 	}
+	
+	@RequestMapping("/delete")
+	public String delete(Map<String, Object>model, @RequestParam(value = "id")Integer id) {
+		try {
+			if(id != null && id>0) {
+				mService.delete(id);
+				model.put("mensaje", "Se elimino correctamente");
+			}
+		} catch(Exception e) {
+			System.out.println(e.getMessage());
+			model.put("mensaje", "No se puedo eliminar el mercadologo");
+		}
+		return "redirect:/mercadologos/list";
+	}
+	
 	
 	@GetMapping("/detalle/{id}")
 	public String detailsMercadologo(@PathVariable(value="id") int idMercadologo, Model model) {
