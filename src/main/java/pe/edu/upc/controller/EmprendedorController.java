@@ -23,7 +23,7 @@ import pe.edu.upc.entities.Emprendedor;
 import pe.edu.upc.serviceinterface.IEmprendedorService;
 
 @Controller
-@Secured({"ROLE_ADMIN","ROLE_EMPRENDEDORES"})
+@Secured({"ROLE_ADMIN","ROLE_EMPRENDEDOR","ROLE_SOPORTE"})
 @RequestMapping("/emprendedores")
 public class EmprendedorController {
 
@@ -119,6 +119,12 @@ public class EmprendedorController {
 		model.put("listEmprendedor", listEmprendedor);
 		return "emprendedor/find";
 
+	}
+	
+	
+	@RequestMapping(value="/home")
+	public String showHome() {
+		return "/home/home";
 	}
 	
 }

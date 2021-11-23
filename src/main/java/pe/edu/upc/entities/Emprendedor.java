@@ -18,17 +18,20 @@ public class Emprendedor {
 	private String nombreEmprendedor;
 	@Column(name = "nombreEmpresa", length = 50, nullable=false)
 	private String nombreEmpresa;
+	@Column(name = "ratingEmprendedor", nullable = false)
+	private float ratingEmprendedor;
 	@Column(name = "giroNegocio", length = 70, nullable=false)
 	private String giroNegocio;
 	public Emprendedor() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Emprendedor(int idEmprendedor, String nombreEmprendedor, String nombreEmpresa, String giroNegocio) {
+	public Emprendedor(int idEmprendedor, String nombreEmprendedor, String nombreEmpresa, String giroNegocio, float ratingEmprendedor) {
 		super();
 		this.idEmprendedor = idEmprendedor;
 		this.nombreEmprendedor = nombreEmprendedor;
 		this.nombreEmpresa = nombreEmpresa;
+		this.ratingEmprendedor=ratingEmprendedor;
 		this.giroNegocio = giroNegocio;
 	}
 	public int getIdEmprendedor() {
@@ -49,6 +52,15 @@ public class Emprendedor {
 	public void setNombreEmpresa(String nombreEmpresa) {
 		this.nombreEmpresa = nombreEmpresa;
 	}
+	
+	public float getRatingEmprendedor() {
+		return ratingEmprendedor;
+	}
+	public void setRatingEmprendedor(float ratingEmprendedor) {
+		this.ratingEmprendedor = ratingEmprendedor;
+	}
+	
+	
 	public String getGiroNegocio() {
 		return giroNegocio;
 	}

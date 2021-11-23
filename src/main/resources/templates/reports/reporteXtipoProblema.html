@@ -25,41 +25,19 @@
 		<div class="content container">
 
 			<div class="d-flex">
-				<h3 class="title-content">Lista de Mercadologo</h3>
-				<a th:href="@{/reviewMercadologos/list}" class="btn btn-dark">Calificaciones</a>
-				<a th:href="@{/mercadologos/new}" class="btn btn-danger">Nuevo</a>
-				<a th:href="@{/mercadologos/find}" class="btn btn-secondary">Buscar</a>
-				<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
-					data-parent="#accordionSidebar">
-					<div class="bg-white py-2 collapse-inner rounded">
-						<a class="collapse-item" th:href="@{/mercadologos/listMercadologo}">Buscar
-							Mercadologos</a>
-					</div>
-				</div>
+				<h3 class="title-content">Reporte Casos más frecuentes Soporte</h3>
 			</div>
 			<table class="table">
 				<thead class="thead-light">
 					<tr>
-						<th scope="col" class="text-center">Código</th>
-						<th scope="col" class="text-center">Nombre</th>
-						<th scope="col" class="text-center">Numero</th>
-						<th scope="col" class="text-center">Rating</th>
-						<th scope="col" class="text-center">Correo</th>
-						<th scope="col" class="text-center">Linkedin</th>
-						<th scope="col" class="text-center">Operación</th>
-						<th scope="col" class="text-center">Operación</th>
+						<th scope="col" class="text-center">Tipo Problema</th>
+						<th scope="col" class="text-center">Cantidad de veces</th>						
 					</tr>
 				</thead>
 				<tbody>
-					<tr th:each="mer : ${listaMercadologos}">
-						<td class="text-center" th:text="${mer.idMercadologo}"></td>
-						<td class="text-center" th:text="${mer.nombreMercadologo}"></td>
-						<td class="text-center" th:text="${mer.numeroMercadologo}"></td>
-						<td class="text-center" th:text="${mer.ratingMercadologo}"></td>
-						<td class="text-center" th:text="${mer.correoMercadologo}"></td>
-						<td class="text-center" th:text="${mer.linkedinMercadologo}"></td>
-						<td class="text-center" ><a th:href="@{'/mercadologos/detalle/' + ${mer.idMercadologo}}" class="btn btn-dark">Actualizar</a></td>
-						<td align = "center"><a th:href="@{/mercadologos/delete?id=}+${mer.idMercadologo}" class="btn btn-dark">Eliminar</a></td>
+					<tr th:each="rep : ${listReporteXtipoProblema}">
+						<td class="text-center" th:text="${rep[0]}"></td>
+						<td class="text-center" th:text="${rep[1]}"></td>						
 					</tr>
 				</tbody>
 			</table>
@@ -77,4 +55,4 @@
 	<script src="/js/dive.js"></script>
 </body>
 
-</html>
+</html>	

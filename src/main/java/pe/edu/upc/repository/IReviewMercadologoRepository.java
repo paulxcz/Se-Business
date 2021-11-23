@@ -16,7 +16,9 @@ public interface IReviewMercadologoRepository extends JpaRepository<ReviewMercad
 	public int buscarReview(@Param("clave")String name);
 	
 	
-	@Query(value= "SELECT mer.nombre_mercadologo,rvm.calificacion from mercadologo mer join review_mercadologo rvm on mer.id_mercadologo=rvm.id_review where rvm.calificacion=4 or rvm.calificacion=5 order by  rvm.calificacion desc ",
+	
+	
+	@Query(value= "SELECT mer.nombre_mercadologo, mer.rating_mercadologo from mercadologo mer where mer.rating_mercadologo >=4 order by  mer.rating_mercadologo desc",
 			nativeQuery=true)
 	
 	public List<String[]> merXrev();

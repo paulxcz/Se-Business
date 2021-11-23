@@ -1,7 +1,10 @@
 package pe.edu.upc.controller;
 
 
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -16,6 +19,7 @@ import pe.edu.upc.entities.Soporte;
 import pe.edu.upc.serviceinterface.ISoporteService;
 
 @Controller
+@Secured({"ROLE_ADMIN","ROLE_SOPORTE"})
 @RequestMapping("soportes")
 public class SoporteController {
 
@@ -57,6 +61,17 @@ public class SoporteController {
 		}
 	}
 	
+	@Secured({"ROLE_ADMIN","ROLE_SOPORTE"})
+	@RequestMapping("/reports")
+	public String listReports(Model model) {
+		return "/reports/reports";
+	}
+	
+	@RequestMapping("/reporte7")
+	public String reporteXtipoProblema(Map<String, Object> model) {
+		model.put("listReporteXtipoProblema", sService.reporteXtipoProblema());
+		return "reports/reporteXtipoProblema";
+	}
 	
 }
 

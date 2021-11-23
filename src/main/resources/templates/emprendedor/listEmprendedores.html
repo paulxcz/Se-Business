@@ -46,6 +46,7 @@
 						<th scope="col" class="text-center">ID</th>
 						<th scope="col" class="text-center">Nombre</th>
 						<th scope="col" class="text-center">Empresa</th>
+						<th scope="col" class="text-center">Rating</th>
 						<th scope="col" class="text-center">Negocio</th>
 						<th scope="col" class="text-center">Operación</th>
 						<th scope="col" class="text-center">Operación</th>
@@ -56,6 +57,7 @@
 						<td class="text-center" th:text="${em.idEmprendedor}"></td>
 						<td class="text-center" th:text="${em.nombreEmprendedor}"></td>
 						<td class="text-center" th:text="${em.nombreEmpresa}"></td>
+						<td class="text-center" th:text="${em.ratingEmprendedor}"></td>
 						<td class="text-center" th:text="${em.giroNegocio}"></td>
 						<td align="center"><a th:href="@{'/emprendedores/detalle/' + ${em.idEmprendedor}}"
 							class="btn btn-dark">Actualizar</a></td>

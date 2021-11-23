@@ -18,19 +18,17 @@ public class Mercadologo {
 	@Column(name = "numeroMercadologo", nullable = false)
 	private String numeroMercadologo;
 	@Column(name = "ratingMercadologo", nullable = false)
-	private int ratingMercadologo;
+	private float ratingMercadologo;
 	@Column(name = "correoMercadologo", length = 80, nullable = false)
 	private String correoMercadologo;
 	@Column(name = "linkedinMercadologo", length = 80, nullable = false)
 	private String linkedinMercadologo;
-	@Column(name = "cantidadProyectosMercadologo", length = 80, nullable = false)
-	private int cantidadProyectosMercadologo;	
 	public Mercadologo() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Mercadologo(int idMercadologo, String nombreMercadologo, String numeroMercadologo, int ratingMercadologo,
-			String correoMercadologo, String linkedinMercadologo, int cantidadProyectosMercadologo) {
+	public Mercadologo(int idMercadologo, String nombreMercadologo, String numeroMercadologo, float ratingMercadologo,
+			String correoMercadologo, String linkedinMercadologo) {
 		super();
 		this.idMercadologo = idMercadologo;
 		this.nombreMercadologo = nombreMercadologo;
@@ -38,7 +36,6 @@ public class Mercadologo {
 		this.ratingMercadologo = ratingMercadologo;
 		this.correoMercadologo = correoMercadologo;
 		this.linkedinMercadologo = linkedinMercadologo;
-		this.cantidadProyectosMercadologo = cantidadProyectosMercadologo;
 	}
 	public int getIdMercadologo() {
 		return idMercadologo;
@@ -58,10 +55,10 @@ public class Mercadologo {
 	public void setNumeroMercadologo(String numeroMercadologo) {
 		this.numeroMercadologo = numeroMercadologo;
 	}
-	public int getRatingMercadologo() {
+	public float getRatingMercadologo() {
 		return ratingMercadologo;
 	}
-	public void setRatingMercadologo(int ratingMercadologo) {
+	public void setRatingMercadologo(float ratingMercadologo) {
 		this.ratingMercadologo = ratingMercadologo;
 	}
 	public String getCorreoMercadologo() {
@@ -75,12 +72,6 @@ public class Mercadologo {
 	}
 	public void setLinkedinMercadologo(String linkedinMercadologo) {
 		this.linkedinMercadologo = linkedinMercadologo;
-	}
-	public int getCantidadProyectosMercadologo() {
-		return cantidadProyectosMercadologo;
-	}
-	public void setCantidadProyectosMercadologo(int cantidadProyectosMercadologo) {
-		this.cantidadProyectosMercadologo = cantidadProyectosMercadologo;
 	}
 
 }

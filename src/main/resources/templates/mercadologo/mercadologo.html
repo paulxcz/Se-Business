@@ -53,11 +53,7 @@
 								
 							<label for="rating">RATING:</label> 
 							<select th:field="*{ratingMercadologo}" required="required" class="form-control" >
-								<option value="1">1</option>
-								<option value="2">2</option>
-								<option value="3">3</option>
-								<option value="4">4</option>
-								<option value="5">5</option>
+								<option value="5" selected>5</option>
 							</select>
 							<br/>
 							<div class="alert alert-danger"
@@ -76,14 +72,6 @@
 							<div class="alert alert-danger"
 								th:if="${#fields.hasErrors('linkedinMercadologo')}"
 								th:errors="*{linkedinMercadologo}"></div>
-								
-								
-							<label for="numero">CANTIDAD DE PROYECTOS:</label> <input type="text" 
-								th:field="*{cantidadProyectosMercadologo}" class="form-control" id="cantidad de proyectos"></input>
-							<div class="alert alert-danger"
-								th:if="${#fields.hasErrors('cantidadProyectosMercadologo')}"
-								th:errors="*{cantidadProyectosMercadologo}"></div>
-								
 						</div>
 
 					</div>

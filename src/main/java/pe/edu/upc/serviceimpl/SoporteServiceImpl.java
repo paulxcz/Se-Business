@@ -30,4 +30,8 @@ public class SoporteServiceImpl implements ISoporteService{
 		return sR.findAll();
 	}
 
+	@Override
+	public List<String[]> reporteXtipoProblema(){
+		return sR.reporteXtipoProblema();
+	}
 }

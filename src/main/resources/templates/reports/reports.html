@@ -36,65 +36,87 @@
 
 						<h3 class="tproyecto ">Proyectos por Emprendedor</h3>
 
-						<p class="dproyecto ">Lista de Emprendedores con más proyectos publicados</p>
+						<p class="dproyecto ">Lista de Emprendedores con más proyectos
+							publicados</p>
 
 						<a class="lnikp " th:href="@{/proyectos/reporte1}">Ver Reporte</a>
-						
+
 
 					</div>
-					
-						<div class="cproyecto ">
+
+					<div class="cproyecto ">
 
 						<h3 class="tproyecto ">Calificación por Mercadologo</h3>
 
-						<p class="dproyecto ">Lista de Mercadologos con mayor calificación</p>
+						<p class="dproyecto ">Lista de Mercadologos con mayor
+							calificación</p>
 
-						<a class="lnikp " th:href="@{/reviewMercadologos/reporte2}">Ver Reporte</a>
-			       </div>
-			       
-					
+						<a class="lnikp " th:href="@{/reviewMercadologos/reporte2}">Ver
+							Reporte</a>
+					</div>
+
 				</div>
-				
+
 				<div class="creportes d-flex justify-content-around">
-				
-				   <div class="cproyecto ">
+
+					<div class="cproyecto ">
 
 						<h3 class="tproyecto ">Calificación por Emprendedor</h3>
 
-						<p class="dproyecto ">Lista de Emprendedores con mayor calificación</p>
+						<p class="dproyecto ">Lista de Emprendedores con mayor
+							calificación</p>
 
-						<a class="lnikp " th:href="@{/reviewEmprendedores/reporte3}">Ver Reporte</a>
-			       </div>
-				
-				 	<div class="cproyecto ">
+						<a class="lnikp " th:href="@{/reviewEmprendedores/reporte3}">Ver
+							Reporte</a>
+					</div>
 
-							<h3 class="tproyecto ">Salarios de Proyecto</h3>
 
-							<p class="dproyecto ">Cantidad de mayores y menores pagos</p>
+					<div class="cproyecto ">
 
-							<a class="lnikp " th:href="@{/proyectos/reporte4}">Ver Reporte</a>
-			       	</div>
-			  </div>
-			  
-			  
-			  <div class="creportes d-flex justify-content-around">
-				
-				   <div class="cproyecto ">
+						<h3 class="tproyecto ">Mercadologos/Proyectos realizados</h3>
 
-						<h3 class="tproyecto ">Proyectos por Mercadologo</h3>
+						<p class="dproyecto ">Mercadologos con más proyectos
+							realizados</p>
 
-						<p class="dproyecto ">Lista de Mercadologos con más proyectos realizados</p>
+						<a class="lnikp " th:href="@{/contratos/reporte6}">Ver Reporte</a>
+					</div>
 
-						<a class="lnikp " th:href="@{/mercadologo/reporte5}">Ver Reporte</a>
-						
-						
-			       </div>
-				
-			  </div>
-			  
+				</div>
+
+
+				<div class="creportes d-flex justify-content-around">
+					<div class="cproyecto ">
+
+						<h3 class="tproyecto ">Salarios de Proyecto</h3>
+
+						<p class="dproyecto ">Cantidad de mayores y menores pagos</p>
+
+						<a class="lnikp " th:href="@{/proyectos/reporte4/1200}">Ver Reporte</a>
+					</div>
+					
+					<div class="cproyecto ">
+
+						<h3 class="tproyecto ">Soporte Casos más frecuentes</h3>
+
+						<p class="dproyecto ">Casos más frecuentes por los que se ingresa un ticket a soporte</p>
+
+						<a class="lnikp " th:href="@{/soportes/reporte7}">Ver Reporte</a>
+					</div>
+
+				</div>
+
 			</div>
-			
-						
+
+
+
+
+
+
+
+
+
+
+
 		</div>
 		<div th:if="${mensaje}" class="alert alert-danger">
 			<p th:text="${mensaje}"></p>

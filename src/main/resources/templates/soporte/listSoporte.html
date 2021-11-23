@@ -33,7 +33,8 @@
 					<tr>
 						<th scope="col" class="text-center">ID</th>
 						<th scope="col" class="text-center">Nombre</th>
-						<th scope="col" class="text-center">Problema</th>
+						<th scope="col" class="text-center">Categoria Solicitud/Problema</th>
+						<th scope="col" class="text-center">Detalle de Solicitud/Problema</th>
 						
 					</tr>
 				</thead>
@@ -41,8 +42,8 @@
 					<tr th:each="sp : ${listaSoportes}">
 						<td class="text-center" th:text="${sp.idSoporte}"></td>
 						<td class="text-center" th:text="${sp.nombreSoporte}"></td>
+						<td class="text-center" th:text="${sp.tipoProblema}"></td>
 						<td class="text-center" th:text="${sp.DescripcionProblema}"></td>
-						
 					</tr>
 				</tbody>
 			</table>

@@ -8,4 +8,6 @@ public interface ISoporteService {
 
 	public Integer insert(Soporte soporte);
 	List<Soporte> list();
+	
+	public List<String[]> reporteXtipoProblema();
 }

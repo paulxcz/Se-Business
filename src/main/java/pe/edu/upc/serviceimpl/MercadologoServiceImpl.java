@@ -56,10 +56,7 @@ public class MercadologoServiceImpl implements IMercadologoService {
 	}
 	
 	
-	@Override
-	public List<String[]> merXpro() {
-		// TODO Auto-generated method stub
-		return mR.merXpro();
-	}
+	
+
 	
 }

@@ -32,17 +32,23 @@
 				<thead class="thead-light">
 					<tr>
 						<th scope="col" class="text-center">ID</th>
-						<th scope="col" class="text-center">Culminacion</th>
+						<th scope="col" class="text-center">Fecha culminación estimada</th>
 						<th scope="col" class="text-center">Especificaciones</th>
 						<th scope="col" class="text-center">Fecha Contrato</th>
+						<th scope="col" class="text-center">Proyecto</th>
+						<th scope="col" class="text-center">Emprendedor</th>
+						<th scope="col" class="text-center">Mercadologo</th>
 					</tr>
 				</thead>
 				<tbody>
 					<tr th:each="co : ${listaContratos}">
 						<td class="text-center" th:text="${co.idContrato}"></td>
-						<td class="text-center" th:text="${co.culminacion}"></td>
+						<td class="text-center" th:text="${co.fechaCulminacionEstimada}"></td>
 						<td class="text-center" th:text="${co.especificaciones}"></td>
 						<td class="text-center" th:text="${co.dateContrato}"></td>
+						<td class="text-center" th:text="${co.proyecto.nombre}"></td>
+						<td class="text-center" th:text="${co.proyecto.emprendedor.nombreEmprendedor}"></td>
+						<td class="text-center" th:text="${co.mercadologo.nombreMercadologo}"></td>
 					</tr>
 				</tbody>
 			</table>

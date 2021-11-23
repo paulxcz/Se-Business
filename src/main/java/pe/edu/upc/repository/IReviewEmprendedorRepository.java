@@ -16,7 +16,7 @@ public interface IReviewEmprendedorRepository extends JpaRepository<ReviewEmpren
 	public int buscarReview(@Param("clave")String name);
 	
 	
-	@Query(value= "SELECT mer.nombre_emprendedor,rvm.calificacion from emprendedor mer join review_emprendedor rvm on mer.id_emprendedor=rvm.id_review where rvm.calificacion=4 or rvm.calificacion=5 order by  rvm.calificacion desc ",
+	@Query(value= "SELECT emp.nombre_emprendedor, emp.rating_emprendedor from emprendedor emp where emp.rating_emprendedor >=4 order by  emp.rating_emprendedor desc ",
 			nativeQuery=true)
 	
 	public List<String[]> empXrev();

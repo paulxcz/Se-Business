@@ -38,24 +38,34 @@
 							readonly th:field="*{idSoporte}"></input>
 
 						<div class="form-group">
-							<label for="nombre">NOMBRE :</label> <input type="text" required
+							<label for="nombre">NOMBRE:</label> <input type="text" required
 								th:field="*{nombreSoporte}" class="form-control" id="nombre"></input>
 							<div class="alert alert-danger"
 								th:if="${#fields.hasErrors('nombreSoporte')}"
 								th:errors="nombreSoporte"></div>
-								
+
+							<label for="nombre">TIPO DE PROBLEMA:</label> <select th:field="*{tipoProblema}"
+								required="required" class="form-control">
+								<option value="Error de Pago">Error de Pago</option>
+								<option value="Error de contacto">Error de contacto</option>
+								<option value="Cambio de rol">Cambio de rol</option>
+								<option value="Discomformidad con servicio">Discomformidad con servicio</option>
+								<option value="Reportar mal comportamiento">Reportar mal comportamiento</option>
+							</select>
+							<div class="alert alert-danger"
+								th:if="${#fields.hasErrors('nombreSoporte')}"
+								th:errors="nombreSoporte"></div>
+
 							<label for="empresa">DESCRIPCION PROBLEMA:</label><br />
-								<textarea rows="7" cols="20" required="required" th:field="*{descripcionProblema}" class="form-control">
+							<textarea rows="7" cols="20" required="required"
+								th:field="*{descripcionProblema}" class="form-control">
 									
 								</textarea>
 							<div class="alert alert-danger"
 								th:if="${#fields.hasErrors('descripcionProblema')}"
-								th:errors="*{descripcionProblema}">
-								
-								
-							</div>
-								
-                         
+								th:errors="*{descripcionProblema}"></div>
+
+
 						</div>
 
 					</div>

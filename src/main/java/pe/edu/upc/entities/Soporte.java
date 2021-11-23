@@ -18,16 +18,25 @@ public class Soporte {
 	private String nombreSoporte;
 	@Column(name = "DescripcionProblema", length = 50, nullable = false)
 	private String DescripcionProblema;
+	@Column(name = "tipoProblema", length = 70, nullable = false)
+	private String tipoProblema;
 	
 	public Soporte() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Soporte(int idSoporte, String nombreSoporte, String descripcionProblema) {
+	public Soporte(int idSoporte, String nombreSoporte, String descripcionProblema, String tipoProblema) {
 		super();
 		this.idSoporte = idSoporte;
 		this.nombreSoporte = nombreSoporte;
+		this.tipoProblema = tipoProblema;
 		DescripcionProblema = descripcionProblema;
+	}
+	public String getTipoProblema() {
+		return tipoProblema;
+	}
+	public void setTipoProblema(String tipoProblema) {
+		this.tipoProblema = tipoProblema;
 	}
 	public int getIdSoporte() {
 		return idSoporte;

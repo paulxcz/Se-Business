@@ -24,10 +24,6 @@ public interface IMercadologoRepository extends JpaRepository<Mercadologo, Integ
 	public List<Mercadologo> findByNombreMercadologoIgnoreCase(String nombreMercadologo);
 	
 	
-	@Query(value= "SELECT mer.nombre_mercadologo,rvm.calificacion from mercadologo mer join review_mercadologo rvm on mer.id_mercadologo=rvm.id_review where rvm.calificacion=4 or rvm.calificacion=5 order by  rvm.calificacion desc ",
-			nativeQuery=true)
-	
-	public List<String[]> merXpro();
 	
 
 	

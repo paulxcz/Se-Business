@@ -23,7 +23,7 @@ import pe.edu.upc.entities.Mercadologo;
 import pe.edu.upc.serviceinterface.IMercadologoService;
 
 @Controller
-@Secured({"ROLE_ADMIN","ROLE_MERCADOLOGO"})
+@Secured({"ROLE_ADMIN","ROLE_MERCADOLOGO","ROLE_SOPORTE"})
 @RequestMapping("/mercadologos")
 public class MercadologoController {
 
@@ -119,12 +119,5 @@ public class MercadologoController {
 		model.put("listMercadologo", listMercadologo);
 		return "mercadologo/find";
 
-	}
-	
-	
-	@RequestMapping("/reporte5")
-	public String mercadologosXpro(Map<String,Object> model) {
-		model.put("listMerXRev",mService.merXpro());
-		return "reports/proyectosMercadologosOrdenados";
 	}
 }

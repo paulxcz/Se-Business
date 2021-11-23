@@ -50,6 +50,5 @@ public class ProyectoServiceImpl implements IProyectoService{
 	@Override
 	public List<String[]> getCantidadMenor(double pago) {
 		return pR.reporteMenorPago(pago);
-	}	
-
+	}
 }

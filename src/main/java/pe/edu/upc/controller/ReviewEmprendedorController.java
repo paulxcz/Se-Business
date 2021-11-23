@@ -3,6 +3,7 @@ package pe.edu.upc.controller;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -60,7 +61,7 @@ public class ReviewEmprendedorController {
 		}
 	}
 	
-	
+	@Secured({"ROLE_ADMIN","ROLE_MERCADOLOGO"})
 	@RequestMapping("/reporte3")
 	public String emprendedoresXreview(Map<String,Object> model) {
 		model.put("listEmpXRev",rService.empXrev());
@@ -76,3 +77,4 @@ public class ReviewEmprendedorController {
 	
 	
 }
+
