@@ -18,7 +18,7 @@ public class Mercadologo {
 	@Column(name = "numeroMercadologo", nullable = false)
 	private String numeroMercadologo;
 	@Column(name = "ratingMercadologo", nullable = false)
-	private int ratingMercadologo;
+	private float ratingMercadologo;
 	@Column(name = "correoMercadologo", length = 80, nullable = false)
 	private String correoMercadologo;
 	@Column(name = "linkedinMercadologo", length = 80, nullable = false)
@@ -27,7 +27,7 @@ public class Mercadologo {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Mercadologo(int idMercadologo, String nombreMercadologo, String numeroMercadologo, int ratingMercadologo,
+	public Mercadologo(int idMercadologo, String nombreMercadologo, String numeroMercadologo, float ratingMercadologo,
 			String correoMercadologo, String linkedinMercadologo) {
 		super();
 		this.idMercadologo = idMercadologo;
@@ -55,10 +55,10 @@ public class Mercadologo {
 	public void setNumeroMercadologo(String numeroMercadologo) {
 		this.numeroMercadologo = numeroMercadologo;
 	}
-	public int getRatingMercadologo() {
+	public float getRatingMercadologo() {
 		return ratingMercadologo;
 	}
-	public void setRatingMercadologo(int ratingMercadologo) {
+	public void setRatingMercadologo(float ratingMercadologo) {
 		this.ratingMercadologo = ratingMercadologo;
 	}
 	public String getCorreoMercadologo() {

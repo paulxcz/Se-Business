@@ -36,5 +36,11 @@ public class ProyectoServiceImpl implements IProyectoService{
 		Optional<Proyecto> op = pR.findById(idProyecto);
 		return op.isPresent() ? op.get() : new Proyecto();
 	}	
+	
+	@Override
+	public List<String[]> proyectosXempre(){
+		return pR.proyectosXempre();
+	}
+
 
 }

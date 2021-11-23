@@ -8,4 +8,6 @@ public interface IReviewEmprendedorService {
 
 	public Integer insert(ReviewEmprendedor review);
 	List<ReviewEmprendedor> list();
+	
+	public List<String[]> empXrev();
 }

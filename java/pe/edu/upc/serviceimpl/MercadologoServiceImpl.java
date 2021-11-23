@@ -1,9 +1,11 @@
 package pe.edu.upc.serviceimpl;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import pe.edu.upc.entities.Mercadologo;
 import pe.edu.upc.repository.IMercadologoRepository;
@@ -31,6 +33,11 @@ public class MercadologoServiceImpl implements IMercadologoService {
 	}
 	
 	@Override
+	public Optional<Mercadologo> listarId(int idMercadologo){
+		return mR.findById(idMercadologo);
+	}
+
+	@Override
 	public List<Mercadologo> findByName(String nombreMercadologo) {
 		// TODO Auto-generated method stub
 		return mR.findByName(nombreMercadologo);
@@ -42,4 +49,14 @@ public class MercadologoServiceImpl implements IMercadologoService {
 		return mR.findByNombreMercadologoIgnoreCase(nombreMercadologo);
 	}
 
+	@Override
+	@Transactional
+	public void delete(int idMercadologo) {
+		mR.deleteById(idMercadologo);
+	}
+	
+	
+	
+
+	
 }
