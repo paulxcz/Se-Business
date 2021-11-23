@@ -11,7 +11,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>Buscar Mercadologo</title>
+<title>Buscar Emprendedor</title>
 
 <!-- Custom fonts for this template-->
 <link href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet"
@@ -39,7 +39,7 @@
 			<!-- Sidebar - Brand -->
 			<a
 				class="sidebar-brand d-flex align-items-center justify-content-center "
-				th:href="@{/mercadologos/index}">
+				th:href="@{/emprendedor/index}">
 				<div class="sidebar-brand-icon rotate-n-15">
 					
 				</div>
@@ -60,7 +60,7 @@
 				<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
 					data-parent="#accordionSidebar">
 					<div class="bg-white py-2 collapse-inner rounded">
-						<a class="collapse-item" th:href="@{/mercadologos/list}">Mercadologos</a>
+						<a class="collapse-item" th:href="@{/emprendedores/list}">Emprendedores</a>
 					</div>
 				</div>
 				
@@ -74,8 +74,8 @@
 				<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
 					data-parent="#accordionSidebar">
 					<div class="bg-white py-2 collapse-inner rounded">
-						<a class="collapse-item" th:href="@{/mercadologos/listMercadologo}">Buscar
-							Mercadologos</a>
+						<a class="collapse-item" th:href="@{/emprendedores/listEmprendedor}">Buscar
+							Emprendedores</a>
 					</div>
 				</div>
 
@@ -154,19 +154,19 @@
 				<div class="container-fluid">
 
 					<!-- Page Heading -->
-					<h1 class="h3 mb-4 text-gray-800">Mercadologos</h1>
+					<h1 class="h3 mb-4 text-gray-800">Emprendedores</h1>
 
-					<form th:action="@{/mercadologos/find}" method="post"
-						th:object="${mercadologo}">
+					<form th:action="@{/emprendedores/find}" method="post"
+						th:object="${emprendedor}">
 						<div class="form-group">
 
 							<label for=mer>Buscar:</label>
 							<div class="col-sm-12">
-								<input type="text" class="form-control" th:field="*{nombreMercadologo}"
-									id="mer" placeholder="Ingrese nombre de Mercadologo"></input>
+								<input type="text" class="form-control" th:field="*{nombreEmprendedor}"
+									id="mer" placeholder="Ingrese nombre de Emprendedor"></input>
 								<div align="right">
 									<button type="submit" class="btn btn-dark">Buscar</button>
-									<a href="/mercadologos/list" class="btn btn-dark">Cancelar</a>
+									<a href="/emprendedores/list" class="btn btn-dark">Cancelar</a>
 								</div>
 							</div>
 
@@ -181,20 +181,18 @@
 							<tr align="center">
 								<th scope="col">id</th>
 								<th scope="col">Nombre</th>
-								<th scope="col">Numero</th>
-								<th scope="col">Rating</th>
-								<th scope="col">Correo</th>
-								<th scope="col">Linkedin</th>
+								<th scope="col">Giro de negocio</th>
+								<th scope="col">Empresa</th>
+							
 							</tr>
 						</thead>
 						<tbody>
-							<tr align="center" th:each="merc: ${listMercadologo}">
-								<td th:text="${merc.idMercadologo}"></td>
-								<td th:text="${merc.nombreMercadologo}"></td>
-								<td th:text="${merc.numeroMercadologo}"></td>
-								<td th:text="${merc.ratingMercadologo}"></td>
-								<td th:text="${merc.correoMercadologo}"></td>
-								<td th:text="${merc.linkedinMercadologo}"></td>
+							<tr align="center" th:each="empr: ${listEmprendedor}">
+								<td th:text="${empr.idEmprendedor}"></td>
+								<td th:text="${empr.nombreEmprendedor}"></td>
+								<td th:text="${empr.giroNegocio}"></td>
+								<td th:text="${empr.nombreEmpresa}"></td>
+							
 								
 
 							</tr>
@@ -251,7 +249,7 @@
 							onclick="document.getElementById('logoutForm').submit();"
 							type="submit">Cerrar</button>
 						<button class="btn btn-dark" type="button" data-dismiss="modal"
-							th:href="@{/mercadologos/list}">Cancel</button>
+							th:href="@{/emprendedores/list}">Cancel</button>
 					</form>
 				</div>
 			</div>
